@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pizza Dello – Pizzeria à emporter à Taller (Landes)</title>
+<meta name="description" content="Pizza Dello, pizzeria à emporter au bourg de Taller (40260, Landes). Pâte à pizza et pains à burger faits maison. Pizzas, burgers, tacos. Tél. 05 58 98 58 43.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%238a1c2b%22/><text x=%2250%22 y=%2272%22 text-anchor=%22middle%22 font-family=%22Georgia,serif%22 font-style=%22italic%22 font-weight=%22bold%22 font-size=%2266%22 fill=%22white%22>D</text></svg>">
+<meta property="og:type" content="restaurant">
+<meta property="og:title" content="Pizza Dello – Pizzeria à Taller (Landes)">
+<meta property="og:description" content="Pizzas, burgers et tacos à emporter. Pâte à pizza et pain à burger faits maison. Tél. 05 58 98 58 43.">
+<meta property="og:image" content="https://pizzadello.fr/images/devanture.jpg">
+<meta property="og:url" content="https://pizzadello.fr/">
+<link rel="canonical" href="https://pizzadello.fr/">
+<meta property="og:locale" content="fr_FR">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Pizza Dello",
+  "servesCuisine": ["Pizza", "Burgers", "Tacos"],
+  "telephone": "+33558985843",
+  "image": "https://pizzadello.fr/images/devanture.jpg",
+  "url": "https://pizzadello.fr/",
+  "priceRange": "€",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Le Bourg",
+    "postalCode": "40260",
+    "addressLocality": "Taller",
+    "addressRegion": "Landes",
+    "addressCountry": "FR"
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Thursday", "Friday", "Saturday", "Sunday"],
+    "opens": "18:00",
+    "closes": "21:00"
+  }],
+  "paymentAccepted": "Carte bancaire, espèces, tickets restaurant",
+  "hasMenu": "https://pizzadello.fr/#carte"
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bordeaux: #8a1c2b;
+    --bordeaux-fonce: #6a1220;
+    --creme: #fbf6ec;
+    --creme-2: #f3e9d6;
+    --encre: #1f1a17;
+    --gris: #4a423c;
+    --vert: #2f6b3a;
+    --ligne: #d9ccb4;
+    --taille: 20px;
+  }
+  * { box-sizing: border-box; }
+  html { font-size: var(--taille); scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--creme);
+    color: var(--encre);
+    font-family: "Atkinson Hyperlegible", Verdana, Arial, sans-serif;
+    line-height: 1.55;
+  }
+  img { max-width: 100%; height: auto; display: block; }
+  .accueil .conteneur > *, .infos-grille > *, .deux-colonnes > * { min-width: 0; }
+  a { color: var(--bordeaux); }
+  h1, h2, h3 { font-family: "Playfair Display", Georgia, serif; line-height: 1.15; margin: 0 0 .5em; }
+  h2 { font-size: 2.1rem; color: var(--bordeaux); }
+  .conteneur { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+  :focus-visible { outline: 4px solid #e0a100; outline-offset: 3px; }
+
+  /* ---------- En-tête ---------- */
+  .entete {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--bordeaux); color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,.2);
+  }
+  .entete .conteneur { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 10px; padding-bottom: 10px; flex-wrap: wrap; }
+  .logo { font-family: "Playfair Display", Georgia, serif; font-size: 1.6rem; font-weight: 800; color: #fff; text-decoration: none; font-style: italic; }
+  .nav { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  .nav a { color: #fff; text-decoration: none; font-weight: 700; padding: 10px 14px; border-radius: 10px; font-size: .95rem; }
+  .nav a:hover { background: rgba(255,255,255,.15); }
+  .taille-texte { display: flex; gap: 6px; align-items: center; }
+  .taille-texte button {
+    font: inherit; font-weight: 700; cursor: pointer;
+    background: #fff; color: var(--bordeaux); border: 0; border-radius: 10px;
+    min-width: 48px; min-height: 48px; font-size: 1rem;
+  }
+
+  /* ---------- Bouton ---------- */
+  .bouton {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5em;
+    min-height: 60px; padding: 14px 26px; border-radius: 14px;
+    font-weight: 700; font-size: 1.15rem; text-decoration: none; cursor: pointer; border: 3px solid transparent;
+  }
+  .bouton-principal { background: var(--bordeaux); color: #fff; }
+  .bouton-principal:hover { background: var(--bordeaux-fonce); }
+  .bouton-secondaire { background: #fff; color: var(--bordeaux); border-color: var(--bordeaux); }
+  .bouton-secondaire:hover { background: var(--creme-2); }
+  .bouton svg { width: 1.3em; height: 1.3em; flex: none; }
+
+  /* ---------- Accueil ---------- */
+  .accueil { padding: 40px 0 48px; }
+  .accueil .conteneur { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
+  .accueil h1 { font-size: 3.2rem; color: var(--bordeaux); font-style: italic; margin-bottom: .15em; }
+  .accroche { font-size: 1.4rem; font-weight: 700; margin: 0 0 .6em; }
+  .accueil p { font-size: 1.1rem; margin: 0 0 1em; }
+  .fait-maison {
+    background: #fff; border-left: 8px solid var(--vert); padding: 14px 18px; border-radius: 8px;
+    font-size: 1.1rem; margin: 0 0 1.4em;
+  }
+  .boutons { display: flex; flex-wrap: wrap; gap: 14px; }
+  .photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+  .photo { border-radius: 18px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,.18); border: 6px solid #fff; }
+
+  .bandeau-infos { background: var(--creme-2); border-top: 1px solid var(--ligne); border-bottom: 1px solid var(--ligne); }
+  .bandeau-infos ul { list-style: none; margin: 0; padding: 22px 16px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; max-width: 1100px; margin: 0 auto; }
+  .bandeau-infos li { display: flex; gap: 12px; align-items: center; font-weight: 700; font-size: 1rem; }
+  .bandeau-infos svg { width: 40px; height: 40px; flex: none; color: var(--bordeaux); }
+
+  /* ---------- Carte ---------- */
+  section { padding: 56px 0; }
+  .intro-section { font-size: 1.1rem; margin: 0 0 1.5em; max-width: 46em; }
+  .onglets { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 30px; }
+  .onglets a {
+    background: #fff; border: 2px solid var(--bordeaux); color: var(--bordeaux);
+    padding: 10px 20px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 1.05rem; min-height: 52px; display: inline-flex; align-items: center;
+  }
+  .onglets a:hover { background: var(--bordeaux); color: #fff; }
+
+  .categorie { background: #fff; border-radius: 18px; padding: 28px 28px 20px; margin-bottom: 30px; box-shadow: 0 2px 10px rgba(0,0,0,.06); scroll-margin-top: 100px; }
+  .categorie h3 { font-size: 1.9rem; color: var(--encre); border-bottom: 4px solid var(--bordeaux); padding-bottom: .3em; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .categorie h3 small { font-family: "Atkinson Hyperlegible", sans-serif; font-size: 1rem; color: var(--gris); font-weight: 700; }
+  .plats { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; column-gap: 44px; }
+  .plat { padding: 14px 0; border-bottom: 1px dashed var(--ligne); break-inside: avoid; }
+  .plat-haut { display: flex; align-items: baseline; gap: 10px; }
+  .plat-nom { font-weight: 700; font-size: 1.2rem; }
+  .plat-points { flex: 1; border-bottom: 3px dotted #b9a98c; transform: translateY(-5px); min-width: 20px; }
+  .plat-prix { font-weight: 700; font-size: 1.2rem; color: var(--bordeaux); white-space: nowrap; }
+  .plat-desc { margin: 4px 0 0; color: var(--gris); font-size: 1rem; }
+  .badge { display: inline-block; background: var(--vert); color: #fff; font-size: .75rem; font-weight: 700; padding: 2px 8px; border-radius: 6px; vertical-align: middle; margin-left: 6px; }
+  .badge-nouveau { background: #e0a100; color: var(--encre); }
+  .plat.nouveau { background: #fdf3d8; margin: 0 -12px; padding-left: 12px; padding-right: 12px; border-radius: 8px; }
+  .note { background: var(--creme); border-radius: 10px; padding: 14px 18px; margin: 18px 0 8px; font-size: 1rem; }
+  .note p { margin: .3em 0; }
+
+  table.tarifs { width: 100%; border-collapse: collapse; font-size: 1.1rem; margin: 10px 0 10px; }
+  table.tarifs th, table.tarifs td { border: 2px solid var(--ligne); padding: 12px 10px; text-align: center; }
+  table.tarifs thead th { background: var(--bordeaux); color: #fff; }
+  table.tarifs tbody th { background: var(--creme-2); text-align: left; }
+  table.tarifs td { font-weight: 700; color: var(--bordeaux); white-space: nowrap; }
+
+  section, .categorie { scroll-margin-top: 80px; }
+
+  /* ---------- Fait maison ---------- */
+  #fait-maison { padding-bottom: 20px; }
+  .maison-grille { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 24px; }
+  .maison-carte { background: #fff; border-radius: 18px; padding: 26px; box-shadow: 0 2px 10px rgba(0,0,0,.06); border-top: 8px solid var(--vert); }
+  .maison-carte.vedette { background: var(--vert); color: #fff; border-top-color: #e0a100; }
+  .maison-carte .surtitre { display: block; font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--vert); margin-bottom: 8px; }
+  .maison-carte.vedette .surtitre { color: #f3d58a; }
+  .maison-carte h3 { font-size: 1.5rem; margin-bottom: .35em; }
+  .maison-carte.vedette h3 { font-size: 1.9rem; }
+  .maison-carte p { margin: 0; font-size: 1.05rem; }
+  .maison-carte.vedette p { font-size: 1.15rem; }
+  .encart-pain {
+    display: flex; gap: 14px; align-items: center;
+    background: var(--vert); color: #fff; border-radius: 12px; padding: 14px 18px; margin: 0 0 12px;
+    font-size: 1.15rem; font-weight: 700;
+  }
+
+  .deux-colonnes { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+  .deux-colonnes .categorie { margin-bottom: 0; }
+
+  /* ---------- Horaires / Accès ---------- */
+  #infos { background: var(--creme-2); }
+  .infos-grille { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+  .carte-info { background: #fff; border-radius: 18px; padding: 28px; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+  .carte-info h3 { font-size: 1.6rem; color: var(--bordeaux); }
+  .gros { font-size: 1.5rem; font-weight: 700; margin: .2em 0; }
+  .carte-info p { margin: .5em 0; }
+  table.horaires { width: 100%; border-collapse: collapse; font-size: 1.2rem; margin: 6px 0 10px; }
+  table.horaires th, table.horaires td { padding: 9px 4px; border-bottom: 1px solid var(--ligne); text-align: left; }
+  table.horaires td { text-align: right; font-weight: 700; color: var(--vert); white-space: nowrap; }
+  table.horaires tr.ferme th, table.horaires tr.ferme td { color: #8a7f76; font-weight: 400; }
+  table.horaires tr.aujourdhui { background: var(--creme-2); }
+  table.horaires tr.aujourdhui th::after { content: "aujourd'hui"; display: block; font-weight: 400; font-size: .75em; }
+  .plan { border: 0; width: 100%; height: 320px; border-radius: 14px; margin-top: 14px; }
+  .telephone-geant { font-size: 2.2rem; font-weight: 700; color: var(--bordeaux); text-decoration: none; display: inline-block; margin: .1em 0 .3em; letter-spacing: .02em; white-space: nowrap; }
+
+  /* ---------- Pied ---------- */
+  footer { background: var(--encre); color: #eee; padding: 34px 0 110px; font-size: 1rem; }
+  footer a { color: #fff; }
+  footer .conteneur { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+
+  /* ---------- Bouton appel fixe (mobile) ---------- */
+  .appel-fixe {
+    display: none; position: fixed; left: 16px; right: 16px; bottom: 14px; z-index: 20;
+    box-shadow: 0 6px 20px rgba(0,0,0,.35); font-size: 1.25rem;
+  }
+
+  @media (max-width: 900px) {
+    :root { --taille: 19px; }
+    .accueil .conteneur, .infos-grille, .deux-colonnes, .maison-grille { grid-template-columns: 1fr; }
+    .accueil h1 { font-size: 2.6rem; }
+    .plats { grid-template-columns: 1fr; }
+    .bandeau-infos ul { grid-template-columns: 1fr 1fr; }
+    .nav a.lien-nav { display: none; }
+    .appel-fixe { display: flex; }
+  }
+  @media (max-width: 520px) {
+    .bandeau-infos ul { grid-template-columns: 1fr; }
+    .categorie { padding: 22px 16px 14px; }
+    .accueil h1 { font-size: 2.3rem; }
+    h2 { font-size: 1.8rem; }
+    .boutons .bouton { width: 100%; }
+    table.tarifs { font-size: .95rem; }
+    table.tarifs th, table.tarifs td { padding: 10px 4px; }
+    .carte-info { padding: 22px 16px; }
+    .telephone-geant { font-size: 1.75rem; }
+    .appel-fixe { font-size: 1.1rem; white-space: nowrap; padding: 12px 16px; min-height: 56px; }
+  }
+
+  @media print {
+    html { font-size: 13px !important; }
+    .entete, .accueil, .bandeau-infos, #fait-maison, .onglets, #infos, footer, .appel-fixe, .pas-imprimer { display: none !important; }
+    body { background: #fff; }
+    section { padding: 0; }
+    .categorie { box-shadow: none; border: 1px solid #ccc; padding: 12px; margin-bottom: 12px; }
+    .imprime-seulement { display: block !important; }
+  }
+  .imprime-seulement { display: none; }
+</style>
+</head>
+<body>
+
+<header class="entete">
+  <div class="conteneur">
+    <a class="logo" href="#haut">Pizza Dello</a>
+    <nav class="nav" aria-label="Menu principal">
+      <a class="lien-nav" href="#carte">La carte</a>
+      <a class="lien-nav" href="#infos">Horaires &amp; accès</a>
+      <div class="taille-texte" aria-label="Taille du texte">
+        <button type="button" id="moins" aria-label="Réduire le texte">A−</button>
+        <button type="button" id="plus" aria-label="Agrandir le texte">A+</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="haut">
+  <!-- ========== ACCUEIL ========== -->
+  <div class="accueil">
+    <div class="conteneur">
+      <div>
+        <h1>Pizza Dello</h1>
+        <p class="accroche">Pizzeria à emporter au bourg de Taller</p>
+        <p class="fait-maison"><strong>Pain à burger fait maison</strong> et <strong>pâte à pizza faite maison</strong> : ici, on prépare tout nous-mêmes.</p>
+        <p>Pizzas, burgers et tacos. <strong>Commandez par téléphone</strong> et passez les chercher, ou mangez sur nos tables en terrasse.</p>
+        <div class="boutons">
+          <a class="bouton bouton-principal" href="tel:+33558985843">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+            <span>Appeler le <span style="white-space:nowrap">05 58 98 58 43</span></span>
+          </a>
+          <a class="bouton bouton-secondaire" href="#carte">Voir la carte</a>
+        </div>
+      </div>
+      <div class="photo">
+        <img src="images/devanture.jpg" width="1600" height="1200" alt="La pizzeria Pizza Dello à Taller : volets bordeaux, terrasse sous une pergola en bois avec tables de pique-nique, ardoise « Menu tacos » devant.">
+      </div>
+    </div>
+  </div>
+
+  <div class="bandeau-infos">
+    <ul>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        Du jeudi au dimanche, de 18 h à 21 h
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        Le Bourg, 40260 Taller
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        À emporter
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg>
+        Carte bancaire, espèces et tickets restaurant
+      </li>
+    </ul>
+  </div>
+
+  <!-- ========== FAIT MAISON ========== -->
+  <section id="fait-maison">
+    <div class="conteneur">
+      <h2>Ici, c'est fait maison</h2>
+      <div class="maison-grille">
+        <div class="maison-carte vedette">
+          <span class="surtitre">Fait maison</span>
+          <h3>Notre pain à burger</h3>
+          <p>Nous faisons <strong>nous-mêmes nos pains à burger</strong>. Pas de pain industriel en sachet : chaque burger est servi dans un pain préparé ici, à Taller.</p>
+        </div>
+        <div class="maison-carte">
+          <span class="surtitre">Fait maison</span>
+          <h3>Notre pâte à pizza</h3>
+          <p>La pâte de toutes nos pizzas est préparée par nos soins, sur place.</p>
+        </div>
+        <div class="maison-carte">
+          <span class="surtitre">Qualité bouchère</span>
+          <h3>Notre viande</h3>
+          <p>Steak haché façon bouchère, d'origine française ou européenne, selon l'arrivage.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CARTE ========== -->
+  <section id="carte">
+    <div class="conteneur">
+      <h2>Notre carte</h2>
+      <p class="imprime-seulement"><strong>Pizza Dello</strong> – Le Bourg, 40260 Taller – Tél. 05 58 98 58 43 – À emporter</p>
+      <p class="intro-section">Choisissez tranquillement, puis <strong>appelez-nous au 05 58 98 58 43</strong> pour commander.</p>
+      <div class="onglets pas-imprimer">
+        <a href="#pizzas">Pizzas</a>
+        <a href="#burgers">Burgers</a>
+        <a href="#tacos">Tacos</a>
+        <a href="#petites-faims">Petites faims</a>
+        <a href="#" id="imprimer">Imprimer la carte</a>
+      </div>
+
+      <!-- PIZZAS -->
+      <div class="categorie" id="pizzas">
+        <h3>Nos pizzas <small>Grande taille : 33 cm</small></h3>
+        <ul class="plats">
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Margherita</span><span class="plat-points"></span><span class="plat-prix">8,00 €</span></div><p class="plat-desc">Sauce tomate, fromage, origan, olives</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Royale</span><span class="plat-points"></span><span class="plat-prix">9,50 €</span></div><p class="plat-desc">Sauce tomate, champignons, jambon, fromage, origan, olives</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Italie</span><span class="plat-points"></span><span class="plat-prix">9,50 €</span></div><p class="plat-desc">Sauce tomate, tomates, mozzarella fraîche, huile d'olive, fromage, origan, olives</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Fromagère</span><span class="plat-points"></span><span class="plat-prix">11,00 €</span></div><p class="plat-desc">Crème fraîche, jambon, camembert <em>ou</em> maroilles <em>ou</em> chèvre, oignons, persillade, fromage, olives, origan</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Landaise <span class="badge">Du pays</span></span><span class="plat-points"></span><span class="plat-prix">13,50 €</span></div><p class="plat-desc">Sauce tomate, magret frais, oignons, crème fraîche, persillade, fromage, origan, olives</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Magret, chèvre &amp; miel</span><span class="plat-points"></span><span class="plat-prix">13,50 €</span></div><p class="plat-desc">Crème fraîche, magret, chèvre, miel, fromage, olives</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Forestière</span><span class="plat-points"></span><span class="plat-prix">11,00 €</span></div><p class="plat-desc">Sauce tomate, champignons, poivrons, saucisse fumée, lardons, oignons, crème fraîche, persillade, fromage, origan, olives</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">5 Fromages</span><span class="plat-points"></span><span class="plat-prix">12,00 €</span></div><p class="plat-desc">Sauce tomate, maroilles, camembert, chèvre, emmental, mozzarella, origan, olives</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Chorizo</span><span class="plat-points"></span><span class="plat-prix">11,00 €</span></div><p class="plat-desc">Sauce tomate, chorizo, poivrons, oignons, crème fraîche, fromage, origan, olives</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Chorizo &amp; chèvre</span><span class="plat-points"></span><span class="plat-prix">11,00 €</span></div><p class="plat-desc">Sauce tomate, chorizo, chèvre, crème fraîche, fromage, olives, origan</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">4 Saisons</span><span class="plat-points"></span><span class="plat-prix">12,00 €</span></div><p class="plat-desc">Sauce tomate, champignons, courgettes, tomates, oignons, poivrons, fromage, origan, olives</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Maroilles</span><span class="plat-points"></span><span class="plat-prix">12,00 €</span></div><p class="plat-desc">Crème fraîche, champignons, saucisse fumée, maroilles, fromage, origan, olives</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Cowboy</span><span class="plat-points"></span><span class="plat-prix">11,00 €</span></div><p class="plat-desc">Sauce tomate, haché de bœuf, saucisse fumée, oignons, fromage, origan, olives, sauce blanche <em>ou</em> sauce burger</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Tallésienne <span class="badge">La maison</span></span><span class="plat-points"></span><span class="plat-prix">14,00 €</span></div><p class="plat-desc">Crème fraîche, champignons, haché de bœuf, tomates, oignons, chorizo, chèvre, fromage, œuf, origan, olives</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Poulet</span><span class="plat-points"></span><span class="plat-prix">11,50 €</span></div><p class="plat-desc">Sauce tomate, champignons, poulet épicé, poivrons, oignons, fromage, origan, olives</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Calzone <small>(pizza pliée)</small></span><span class="plat-points"></span><span class="plat-prix">11,50 €</span></div><p class="plat-desc">Sauce tomate, champignons, jambon, œuf, fromage, olives</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Tonio</span><span class="plat-points"></span><span class="plat-prix">12,00 €</span></div><p class="plat-desc">Sauce tomate, thon, tomates, oignons, mozzarella fraîche, persillade, fromage, olives</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Serrano fromage</span><span class="plat-points"></span><span class="plat-prix">10,50 €</span></div><p class="plat-desc">Crème fraîche, lardons, chèvre <em>ou</em> camembert, miel, fromage, olives</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Fruits de mer</span><span class="plat-points"></span><span class="plat-prix">12,00 €</span></div><p class="plat-desc">Sauce tomate, fruits de mer, persillade, fromage, citron, olives</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Chèvre &amp; pomme</span><span class="plat-points"></span><span class="plat-prix">10,50 €</span></div><p class="plat-desc">Crème fraîche, chèvre, pommes, miel, fromage, olives</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Reblochon</span><span class="plat-points"></span><span class="plat-prix">13,50 €</span></div><p class="plat-desc">Crème fraîche, tomates, champignons, haché de bœuf, reblochon, oignons, fromage, origan, olives</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Kebab</span><span class="plat-points"></span><span class="plat-prix">13,00 €</span></div><p class="plat-desc">Crème fraîche, kebab, tomates, poivrons, oignons, cheddar, fromage, olives, sauce blanche</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Pitchoune <small>(26 cm, pour les enfants)</small></span><span class="plat-points"></span><span class="plat-prix">7,00 €</span></div><p class="plat-desc">Sauce tomate, jambon, fromage, olives</p></li>
+        </ul>
+        <div class="note">
+          <p><strong>Bruschetta + frites : 10,00 €</strong> — une tranche de pain garnie et gratinée au four. Choisissez sa garniture parmi les pizzas ci-dessus.</p>
+          <p><strong>Ingrédient en plus :</strong> 1,50 € (magret : 4,00 € · œuf : 1,00 €)</p>
+          <p>Le « fromage » de nos pizzas est un mélange de 60 % mozzarella et 40 % emmental.</p>
+        </div>
+      </div>
+
+      <!-- BURGERS -->
+      <div class="categorie" id="burgers">
+        <h3>Nos burgers</h3>
+        <p class="encart-pain">Tous nos burgers sont servis dans un pain fait maison.</p>
+        <p class="plat-desc" style="font-size:1.05rem;margin:0 0 6px">Tous nos burgers contiennent&nbsp;: salade, tomates, oignons, cornichons, sauce burger, et au choix <strong>un steak de 150 g</strong> ou <strong>un filet de poulet pané</strong>.</p>
+        <ul class="plats">
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Classique</span></div><p class="plat-desc">Cheddar</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Savoyard</span></div><p class="plat-desc">Cheddar, reblochon</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Normand</span></div><p class="plat-desc">Cheddar, camembert</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Biquette</span></div><p class="plat-desc">Cheddar, chèvre</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Fort</span></div><p class="plat-desc">Cheddar, roquefort</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Chetemi</span></div><p class="plat-desc">Cheddar, maroilles</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Montagnard</span></div><p class="plat-desc">Poitrine fumée, raclette, galette de pomme de terre</p></li>
+        </ul>
+        <table class="tarifs">
+          <thead><tr><th scope="col">Formule</th><th scope="col">Tous les burgers</th><th scope="col">Montagnard</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Burger seul</th><td>10,00 €</td><td>12,50 €</td></tr>
+            <tr><th scope="row">Burger + frites</th><td>11,50 €</td><td>13,50 €</td></tr>
+            <tr><th scope="row">Burger + frites + canette 33 cl</th><td>13,00 €</td><td>15,00 €</td></tr>
+          </tbody>
+        </table>
+        <div class="note">
+          <p><strong>Steak haché en plus :</strong> 4,00 €</p>
+          <p>Viande d'origine française ou UE, façon bouchère (selon arrivage). Sauces ketchup et mayonnaise comprises.</p>
+        </div>
+      </div>
+
+      <div class="deux-colonnes">
+        <!-- TACOS -->
+        <div class="categorie" id="tacos">
+          <h3>Nos tacos</h3>
+          <p class="plat-desc" style="font-size:1.05rem">Une grande galette de blé garnie, pliée et grillée.<br>Viande au choix : <strong>cordon bleu, steak haché, kebab ou merguez</strong>.<br>Tous nos tacos sont garnis de sauce blanche, sauce fromagère maison, salade, tomates, oignons et frites.</p>
+          <table class="tarifs">
+            <thead><tr><th scope="col"></th><th scope="col">Seul</th><th scope="col">+ frites</th><th scope="col">+ frites + soda</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">1 viande</th><td>6,50 €</td><td>8,00 €</td><td>9,50 €</td></tr>
+              <tr><th scope="row">2 viandes</th><td>8,00 €</td><td>9,50 €</td><td>11,00 €</td></tr>
+              <tr><th scope="row">3 viandes</th><td>9,50 €</td><td>11,00 €</td><td>12,50 €</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- PETITES FAIMS -->
+        <div class="categorie" id="petites-faims">
+          <h3>Petites faims &amp; douceurs</h3>
+          <ul class="plats" style="grid-template-columns:1fr">
+            <li class="plat nouveau"><div class="plat-haut"><span class="plat-nom">Crispy épicés (6 pièces) + frites <span class="badge badge-nouveau">Nouveau</span></span><span class="plat-points"></span><span class="plat-prix">9,50 €</span></div></li>
+            <li class="plat nouveau"><div class="plat-haut"><span class="plat-nom">Crispy épicés (4 pièces) + nuggets (4 pièces) <span class="badge badge-nouveau">Nouveau</span></span><span class="plat-points"></span><span class="plat-prix">9,50 €</span></div></li>
+            <li class="plat"><div class="plat-haut"><span class="plat-nom">Frites</span><span class="plat-points"></span><span class="plat-prix">2,50 €</span></div></li>
+            <li class="plat"><div class="plat-haut"><span class="plat-nom">Nuggets (7 pièces)</span><span class="plat-points"></span><span class="plat-prix">6,50 €</span></div></li>
+            <li class="plat"><div class="plat-haut"><span class="plat-nom">Nuggets + frites</span><span class="plat-points"></span><span class="plat-prix">8,00 €</span></div></li>
+            <li class="plat"><div class="plat-haut"><span class="plat-nom">Boîte Dello (12 pièces)</span><span class="plat-points"></span><span class="plat-prix">10,00 €</span></div><p class="plat-desc">3 camemberts, 3 nuggets, 3 chili nuggets, 3 oignons</p></li>
+            <li class="plat"><div class="plat-haut"><span class="plat-nom">Boîte Dello (20 pièces)</span><span class="plat-points"></span><span class="plat-prix">14,50 €</span></div><p class="plat-desc">5 camemberts, 5 nuggets, 5 chili nuggets, 5 oignons</p></li>
+            <li class="plat"><div class="plat-haut"><span class="plat-nom">Gaufre belge au sucre</span><span class="plat-points"></span><span class="plat-prix">3,50 €</span></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== HORAIRES & ACCÈS ========== -->
+  <section id="infos">
+    <div class="conteneur">
+      <h2>Horaires &amp; accès</h2>
+      <div class="infos-grille">
+        <div class="carte-info">
+          <h3>Quand sommes-nous ouverts&nbsp;?</h3>
+          <table class="horaires">
+            <tbody>
+              <tr class="ferme"><th scope="row">Lundi</th><td>Fermé</td></tr>
+              <tr class="ferme"><th scope="row">Mardi</th><td>Fermé</td></tr>
+              <tr class="ferme"><th scope="row">Mercredi</th><td>Fermé</td></tr>
+              <tr><th scope="row">Jeudi</th><td>18 h – 21 h</td></tr>
+              <tr><th scope="row">Vendredi</th><td>18 h – 21 h</td></tr>
+              <tr><th scope="row">Samedi</th><td>18 h – 21 h</td></tr>
+              <tr><th scope="row">Dimanche</th><td>18 h – 21 h</td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:1em">Pour commander, un seul numéro&nbsp;:</p>
+          <a class="telephone-geant" href="tel:+33558985843">05 58 98 58 43</a>
+          <p>Vos pizzas sont préparées à la commande. Passez les récupérer à l'heure convenue.</p>
+          <p><strong>Paiement :</strong> carte bancaire, espèces et tickets restaurant.</p>
+        </div>
+        <div class="carte-info">
+          <h3>Où nous trouver&nbsp;?</h3>
+          <p class="gros">Le Bourg<br>40260 Taller</p>
+          <p>Au cœur du village, parking devant la pizzeria.</p>
+          <a class="bouton bouton-secondaire" href="https://www.google.com/maps/dir/?api=1&amp;destination=Pizza+Dello+Le+Bourg+40260+Taller" target="_blank" rel="noopener">Obtenir l'itinéraire</a>
+          <iframe class="plan" title="Plan d'accès à Pizza Dello, Taller" loading="lazy" src="https://www.google.com/maps?q=Le+Bourg,+40260+Taller,+France&amp;z=15&amp;output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="conteneur">
+    <div><strong>Pizza Dello</strong> · Le Bourg, 40260 Taller · <a href="tel:+33558985843">05 58 98 58 43</a></div>
+    <div>© PIZZA DELLO 2026</div>
+  </div>
+</footer>
+
+<a class="bouton bouton-principal appel-fixe" href="tel:+33558985843">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+  Appeler pour commander
+</a>
+
+<script>
+  (function () {
+    var racine = document.documentElement;
+    var tailles = [18, 20, 23, 26];
+    var i = 1;
+    try { var s = localStorage.getItem('taille-texte'); if (s !== null) i = +s; } catch (e) {}
+    function appliquer() {
+      racine.style.setProperty('--taille', tailles[i] + 'px');
+      try { localStorage.setItem('taille-texte', i); } catch (e) {}
+    }
+    if (i !== 1) appliquer();
+    document.getElementById('plus').onclick = function () { if (i < tailles.length - 1) { i++; appliquer(); } };
+    document.getElementById('moins').onclick = function () { if (i > 0) { i--; appliquer(); } };
+    var lignes = document.querySelectorAll('table.horaires tbody tr');
+    var jour = (new Date().getDay() + 6) % 7; // lundi = 0
+    if (lignes[jour]) lignes[jour].classList.add('aujourdhui');
+    document.getElementById('imprimer').onclick = function (e) { e.preventDefault(); window.print(); };
+  })();
+</script>
+</body>
+</html>
