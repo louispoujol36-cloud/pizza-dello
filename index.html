@@ -182,7 +182,7 @@
   .carte-info h3 { font-size: 1.6rem; color: var(--bordeaux); }
   .gros { font-size: 1.5rem; font-weight: 700; margin: .2em 0; }
   .carte-info p { margin: .5em 0; }
-  table.horaires { width: 100%; border-collapse: collapse; font-size: 1.2rem; margin: 6px 0 10px; }
+  table.horaires { scroll-margin-top: 90px; width: 100%; border-collapse: collapse; font-size: 1.2rem; margin: 6px 0 10px; }
   table.horaires th, table.horaires td { padding: 9px 4px; border-bottom: 1px solid var(--ligne); text-align: left; }
   table.horaires td { text-align: right; font-weight: 700; color: var(--vert); white-space: nowrap; }
   table.horaires tr.ferme th, table.horaires tr.ferme td { color: #8a7f76; font-weight: 400; }
@@ -278,7 +278,7 @@
     <ul>
       <li>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-        Du jeudi au dimanche, de 18 h à 21 h
+        <span>Du jeudi au dimanche, <a href="#horaires">voir les horaires</a></span>
       </li>
       <li>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
@@ -436,7 +436,7 @@
       <div class="infos-grille">
         <div class="carte-info">
           <h3>Quand sommes-nous ouverts&nbsp;?</h3>
-          <table class="horaires">
+          <table class="horaires" id="horaires">
             <tbody>
               <tr class="ferme"><th scope="row">Lundi</th><td>Fermé</td></tr>
               <tr class="ferme"><th scope="row">Mardi</th><td>Fermé</td></tr>
