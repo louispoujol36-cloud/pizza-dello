@@ -31,12 +31,11 @@
     "addressRegion": "Landes",
     "addressCountry": "FR"
   },
-  "openingHoursSpecification": [{
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Thursday", "Friday", "Saturday", "Sunday"],
-    "opens": "18:00",
-    "closes": "21:00"
-  }],
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "18:30", "closes": "20:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday", "Saturday"], "opens": "18:00", "closes": "21:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "18:00", "closes": "20:30" }
+  ],
   "paymentAccepted": "Carte bancaire, espèces, tickets restaurant",
   "hasMenu": "https://pizzadello.fr/#carte"
 }
@@ -442,10 +441,10 @@
               <tr class="ferme"><th scope="row">Lundi</th><td>Fermé</td></tr>
               <tr class="ferme"><th scope="row">Mardi</th><td>Fermé</td></tr>
               <tr class="ferme"><th scope="row">Mercredi</th><td>Fermé</td></tr>
-              <tr><th scope="row">Jeudi</th><td>18 h – 21 h</td></tr>
+              <tr><th scope="row">Jeudi</th><td>18 h 30 – 20 h 30</td></tr>
               <tr><th scope="row">Vendredi</th><td>18 h – 21 h</td></tr>
               <tr><th scope="row">Samedi</th><td>18 h – 21 h</td></tr>
-              <tr><th scope="row">Dimanche</th><td>18 h – 21 h</td></tr>
+              <tr><th scope="row">Dimanche</th><td>18 h – 20 h 30</td></tr>
             </tbody>
           </table>
           <p style="margin-top:1em">Pour commander, un seul numéro&nbsp;:</p>
