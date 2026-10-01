@@ -86,10 +86,11 @@
   }
   .entete .conteneur { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 10px; padding-bottom: 10px; flex-wrap: wrap; }
   .logo { font-family: "Playfair Display", Georgia, serif; font-size: 1.6rem; font-weight: 800; color: #fff; text-decoration: none; font-style: italic; }
-  .nav { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  .nav { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-left: auto; }
   .nav a { color: #fff; text-decoration: none; font-weight: 700; padding: 10px 14px; border-radius: 10px; font-size: .95rem; }
   .nav a:hover { background: rgba(255,255,255,.15); }
   .taille-texte { display: flex; gap: 6px; align-items: center; }
+  .taille-libelle { font-size: .8rem; font-weight: 700; line-height: 1.15; text-align: right; margin-right: 4px; }
   .taille-texte button {
     font: inherit; font-weight: 700; cursor: pointer;
     background: #fff; color: var(--bordeaux); border: 0; border-radius: 10px;
@@ -163,6 +164,7 @@
   .note { background: var(--creme); border-radius: 10px; padding: 14px 18px; margin: 18px 0 8px; font-size: 1rem; }
   .note p { margin: .3em 0; }
 
+  .titre-formules { font-weight: 700; font-size: 1.15rem; margin: 22px 0 4px; }
   table.tarifs { width: 100%; border-collapse: collapse; font-size: 1.1rem; margin: 10px 0 10px; }
   table.tarifs th, table.tarifs td { border: 2px solid var(--ligne); padding: 12px 10px; text-align: center; }
   table.tarifs thead th { background: var(--bordeaux); color: #fff; }
@@ -220,12 +222,13 @@
 
   .retour-haut {
     position: fixed; right: 16px; bottom: 16px; z-index: 15;
-    display: inline-flex; align-items: center; gap: 6px;
-    background: var(--encre); color: #fff; text-decoration: none; font-weight: 700; font-size: .95rem;
-    padding: 12px 16px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,.3);
+    display: flex; align-items: center; justify-content: center;
+    width: 52px; height: 52px; border-radius: 50%;
+    background: #fff; color: var(--bordeaux); border: 2px solid var(--bordeaux);
+    box-shadow: 0 4px 14px rgba(0,0,0,.25);
   }
   .retour-haut[hidden] { display: none; }
-  .retour-haut svg { width: 1.1em; height: 1.1em; }
+  .retour-haut svg { width: 26px; height: 26px; }
 
   @media (max-width: 900px) {
     .retour-haut { bottom: 88px; }
@@ -234,7 +237,12 @@
     .accueil h1 { font-size: 2.6rem; }
     .plats { grid-template-columns: 1fr; }
     .bandeau-infos ul { grid-template-columns: 1fr 1fr; }
-    .nav a.lien-nav { display: none; }
+    .entete .conteneur { row-gap: 6px; padding-top: 8px; padding-bottom: 6px; }
+    .logo { font-size: 1.4rem; }
+    .taille-libelle { max-width: 4.6em; }
+    .nav { order: 3; width: 100%; margin: 0; gap: 8px; }
+    .nav a.lien-nav { flex: 1; text-align: center; padding: 7px 8px; font-size: .9rem; background: rgba(255,255,255,.14); }
+    section, .categorie, table.horaires { scroll-margin-top: 125px; }
     .appel-fixe { display: flex; }
   }
   @media (max-width: 520px) {
@@ -269,11 +277,12 @@
     <nav class="nav" aria-label="Menu principal">
       <a class="lien-nav" href="#carte">La carte</a>
       <a class="lien-nav" href="#infos">Horaires &amp; accès</a>
-      <div class="taille-texte" aria-label="Taille du texte">
-        <button type="button" id="moins" aria-label="Réduire le texte">A−</button>
-        <button type="button" id="plus" aria-label="Agrandir le texte">A+</button>
-      </div>
     </nav>
+    <div class="taille-texte" role="group" aria-label="Taille du texte">
+      <span class="taille-libelle" aria-hidden="true">Taille du texte</span>
+      <button type="button" id="moins" aria-label="Réduire le texte">A−</button>
+      <button type="button" id="plus" aria-label="Agrandir le texte">A+</button>
+    </div>
   </div>
 </header>
 
@@ -401,14 +410,15 @@
         <p class="encart-pain">Tous nos burgers sont servis dans un pain fait maison.</p>
         <p class="plat-desc" style="font-size:1.05rem;margin:0 0 6px">Tous nos burgers contiennent&nbsp;: salade, tomates, oignons, cornichons, sauce burger, et au choix <strong>un steak de 150 g</strong> ou <strong>un filet de poulet pané</strong>.</p>
         <ul class="plats">
-          <li class="plat"><div class="plat-haut"><span class="plat-nom">Classique</span></div><p class="plat-desc">Cheddar</p></li>
-          <li class="plat"><div class="plat-haut"><span class="plat-nom">Savoyard</span></div><p class="plat-desc">Cheddar, reblochon</p></li>
-          <li class="plat"><div class="plat-haut"><span class="plat-nom">Normand</span></div><p class="plat-desc">Cheddar, camembert</p></li>
-          <li class="plat"><div class="plat-haut"><span class="plat-nom">Biquette</span></div><p class="plat-desc">Cheddar, chèvre</p></li>
-          <li class="plat"><div class="plat-haut"><span class="plat-nom">Fort</span></div><p class="plat-desc">Cheddar, roquefort</p></li>
-          <li class="plat"><div class="plat-haut"><span class="plat-nom">Chetemi</span></div><p class="plat-desc">Cheddar, maroilles</p></li>
-          <li class="plat"><div class="plat-haut"><span class="plat-nom">Montagnard</span></div><p class="plat-desc">Poitrine fumée, raclette, galette de pomme de terre</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Classique</span><span class="plat-points"></span><span class="plat-prix">10,00 €</span></div><p class="plat-desc">Cheddar</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Savoyard</span><span class="plat-points"></span><span class="plat-prix">10,00 €</span></div><p class="plat-desc">Cheddar, reblochon</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Normand</span><span class="plat-points"></span><span class="plat-prix">10,00 €</span></div><p class="plat-desc">Cheddar, camembert</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Biquette</span><span class="plat-points"></span><span class="plat-prix">10,00 €</span></div><p class="plat-desc">Cheddar, chèvre</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Fort</span><span class="plat-points"></span><span class="plat-prix">10,00 €</span></div><p class="plat-desc">Cheddar, roquefort</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Chetemi</span><span class="plat-points"></span><span class="plat-prix">10,00 €</span></div><p class="plat-desc">Cheddar, maroilles</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Montagnard</span><span class="plat-points"></span><span class="plat-prix">12,50 €</span></div><p class="plat-desc">Poitrine fumée, raclette, galette de pomme de terre</p></li>
         </ul>
+        <p class="titre-formules">Avec des frites ou en menu&nbsp;:</p>
         <table class="tarifs">
           <thead><tr><th scope="col">Formule</th><th scope="col">Tous les burgers</th><th scope="col">Montagnard</th></tr></thead>
           <tbody>
@@ -498,9 +508,8 @@
   </div>
 </footer>
 
-<a class="retour-haut" id="retour-haut" href="#haut" hidden>
+<a class="retour-haut" id="retour-haut" href="#haut" aria-label="Revenir en haut de la page" title="Haut de page" hidden>
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>
-  Haut de page
 </a>
 
 <a class="bouton bouton-principal appel-fixe" href="tel:+33558985843" data-goatcounter-click="appel-bouton-mobile" data-goatcounter-title="Appel (bouton mobile)">
