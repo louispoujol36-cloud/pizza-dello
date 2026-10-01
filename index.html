@@ -117,6 +117,16 @@
     background: #fff; border-left: 8px solid var(--vert); padding: 14px 18px; border-radius: 8px;
     font-size: 1.1rem; margin: 0 0 1.4em;
   }
+  .statut {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #fff; border: 2px solid var(--ligne); border-radius: 999px;
+    padding: 8px 18px 8px 14px; font-weight: 700; font-size: 1.05rem; margin: 0 0 1em;
+  }
+  .statut[hidden] { display: none; }
+  .statut .pastille { width: 14px; height: 14px; border-radius: 50%; background: #8a7f76; flex: none; }
+  .statut.ouvert { border-color: var(--vert); color: var(--vert); }
+  .statut.ouvert .pastille { background: var(--vert); }
+  .statut.bientot .pastille { background: #e0a100; }
   .boutons { display: flex; flex-wrap: wrap; gap: 14px; }
   .photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
   .photo { border-radius: 18px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,.18); border: 6px solid #fff; }
@@ -207,7 +217,17 @@
     box-shadow: 0 6px 20px rgba(0,0,0,.35); font-size: 1.25rem;
   }
 
+  .retour-haut {
+    position: fixed; right: 16px; bottom: 16px; z-index: 15;
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--encre); color: #fff; text-decoration: none; font-weight: 700; font-size: .95rem;
+    padding: 12px 16px; border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,.3);
+  }
+  .retour-haut[hidden] { display: none; }
+  .retour-haut svg { width: 1.1em; height: 1.1em; }
+
   @media (max-width: 900px) {
+    .retour-haut { bottom: 88px; }
     :root { --taille: 19px; }
     .accueil .conteneur, .infos-grille, .deux-colonnes, .maison-grille { grid-template-columns: 1fr; }
     .accueil h1 { font-size: 2.6rem; }
@@ -231,7 +251,7 @@
 
   @media print {
     html { font-size: 13px !important; }
-    .entete, .accueil, .bandeau-infos, #fait-maison, .onglets, #infos, footer, .appel-fixe, .pas-imprimer { display: none !important; }
+    .entete, .accueil, .bandeau-infos, #fait-maison, .onglets, #infos, footer, .appel-fixe, .retour-haut, .pas-imprimer { display: none !important; }
     body { background: #fff; }
     section { padding: 0; }
     .categorie { box-shadow: none; border: 1px solid #ccc; padding: 12px; margin-bottom: 12px; }
@@ -263,6 +283,7 @@
       <div>
         <h1>Pizza Dello</h1>
         <p class="accroche">Pizzeria à emporter au bourg de Taller</p>
+        <p class="statut" id="statut" hidden><span class="pastille"></span><span id="statut-texte"></span></p>
         <p class="fait-maison"><strong>Pain à burger fait maison</strong> et <strong>pâte à pizza faite maison</strong> : ici, on prépare tout nous-mêmes.</p>
         <p>Pizzas, burgers et tacos. <strong>Commandez par téléphone</strong> et passez les chercher, ou mangez sur nos tables en terrasse.</p>
         <div class="boutons">
@@ -476,6 +497,11 @@
   </div>
 </footer>
 
+<a class="retour-haut" id="retour-haut" href="#haut" hidden>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>
+  Haut de page
+</a>
+
 <a class="bouton bouton-principal appel-fixe" href="tel:+33558985843" data-goatcounter-click="appel-bouton-mobile" data-goatcounter-title="Appel (bouton mobile)">
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
   Appeler pour commander
@@ -494,9 +520,39 @@
     if (i !== 1) appliquer();
     document.getElementById('plus').onclick = function () { if (i < tailles.length - 1) { i++; appliquer(); } };
     document.getElementById('moins').onclick = function () { if (i > 0) { i--; appliquer(); } };
+    // Horaires en minutes depuis minuit, lundi = 0. À modifier ici ET dans le tableau des horaires.
+    var horaires = [null, null, null, [18 * 60 + 30, 20 * 60 + 30], [18 * 60, 21 * 60], [18 * 60, 21 * 60], [18 * 60, 20 * 60 + 30]];
+    var nomsJours = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'];
+    function heure(m) { return Math.floor(m / 60) + ' h' + (m % 60 ? ' ' + ('0' + m % 60).slice(-2) : ''); }
+    // Jour et heure à Taller, même si le visiteur est ailleurs
+    var jour, minutes;
+    try {
+      var parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Paris', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(new Date());
+      var v = {}; parts.forEach(function (x) { v[x.type] = x.value; });
+      jour = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].indexOf(v.weekday);
+      minutes = (+v.hour % 24) * 60 + +v.minute;
+    } catch (e) {
+      var d = new Date(); jour = (d.getDay() + 6) % 7; minutes = d.getHours() * 60 + d.getMinutes();
+    }
     var lignes = document.querySelectorAll('table.horaires tbody tr');
-    var jour = (new Date().getDay() + 6) % 7; // lundi = 0
     if (lignes[jour]) lignes[jour].classList.add('aujourdhui');
+
+    var statut = document.getElementById('statut'), texte = document.getElementById('statut-texte');
+    var h = horaires[jour];
+    if (h && minutes >= h[0] && minutes < h[1]) {
+      statut.className = 'statut ouvert'; texte.textContent = "Ouvert en ce moment, jusqu'à " + heure(h[1]);
+    } else if (h && minutes < h[0]) {
+      statut.className = 'statut bientot'; texte.textContent = 'Ouvre ce soir à ' + heure(h[0]);
+    } else {
+      for (var n = 1; n <= 7; n++) {
+        var j = (jour + n) % 7;
+        if (horaires[j]) { texte.textContent = 'Fermé — réouverture ' + (n === 1 ? 'demain' : nomsJours[j]) + ' à ' + heure(horaires[j][0]); break; }
+      }
+    }
+    statut.hidden = false;
+
+    var haut = document.getElementById('retour-haut');
+    window.addEventListener('scroll', function () { haut.hidden = window.scrollY < 800; }, { passive: true });
     document.getElementById('imprimer').onclick = function (e) { e.preventDefault(); window.print(); };
   })();
 </script>
