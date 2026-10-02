@@ -437,7 +437,7 @@
           <p class="gros">Le Bourg<br>40260 Taller</p>
           <p>Au cœur du village, parking devant la pizzeria.</p>
           <a class="bouton bouton-secondaire" href="https://www.google.com/maps/dir/?api=1&amp;destination=Pizza+Dello+Le+Bourg+40260+Taller" target="_blank" rel="noopener">Obtenir l'itinéraire</a>
-          <button type="button" class="bouton bouton-secondaire" id="voir-plan">Voir le plan</button>
+          <iframe class="plan" title="Plan d'accès à Pizza Dello, Taller" loading="lazy" src="https://www.google.com/maps?q=Le+Bourg,+40260+Taller,+France&amp;z=15&amp;output=embed"></iframe>
         </div>
       </div>
     </div>
@@ -520,16 +520,6 @@
       });
     });
     window.addEventListener('hashchange', function () { montrer(location.hash.slice(1)); });
-
-    // Le plan Google ne se charge que si on le demande
-    var boutonPlan = document.getElementById('voir-plan');
-    boutonPlan.addEventListener('click', function () {
-      var f = document.createElement('iframe');
-      f.className = 'plan';
-      f.title = "Plan d'accès à Pizza Dello, Taller";
-      f.src = 'https://www.google.com/maps?q=Le+Bourg,+40260+Taller,+France&z=15&output=embed';
-      boutonPlan.replaceWith(f);
-    });
 
     var haut = document.getElementById('retour-haut');
     window.addEventListener('scroll', function () { haut.hidden = window.scrollY < 800; }, { passive: true });
