@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#8a1c2b">
 <meta name="google-site-verification" content="xhw6yG8llkvXOR1uSnf7CuuS6yBKuZrmNks1G8deh7s">
 <title>Pizza Dello – Pizzeria à emporter à Taller</title>
 <meta name="description" content="Pizza Dello, pizzeria à emporter au bourg de Taller (40260, Landes). Pâte à pizza et pains à burger faits maison. Pizzas, burgers, tacos. Tél. 05 58 98 58 43.">
@@ -13,6 +15,9 @@
 <meta property="og:title" content="Pizza Dello – Pizzeria à emporter à Taller">
 <meta property="og:description" content="Pizzas, burgers et tacos à emporter. Pâte à pizza et pain à burger faits maison. Tél. 05 58 98 58 43.">
 <meta property="og:image" content="https://pizzadello.fr/images/devanture.jpg">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="1200">
+<meta property="og:site_name" content="Pizza Dello">
 <meta property="og:url" content="https://pizzadello.fr/">
 <link rel="canonical" href="https://pizzadello.fr/">
 <meta property="og:locale" content="fr_FR">
@@ -46,221 +51,271 @@
   "hasMenu": "https://pizzadello.fr/#carte"
 }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/atkinson-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/atkinson-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/playfair-italique.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+  /* Polices hébergées sur le site (aucune requête vers un service externe) */
+  @font-face { font-family: "Atkinson Hyperlegible"; font-style: normal; font-weight: 400; font-display: swap; src: url("/fonts/atkinson-400.woff2") format("woff2"); }
+  @font-face { font-family: "Atkinson Hyperlegible"; font-style: normal; font-weight: 700; font-display: swap; src: url("/fonts/atkinson-700.woff2") format("woff2"); }
+  @font-face { font-family: "Playfair Display"; font-style: normal; font-weight: 700; font-display: swap; src: url("/fonts/playfair-700.woff2") format("woff2"); }
+  @font-face { font-family: "Playfair Display"; font-style: italic; font-weight: 700 800; font-display: swap; src: url("/fonts/playfair-italique.woff2") format("woff2"); }
+
   :root {
+    color-scheme: light;
     --bordeaux: #8a1c2b;
     --bordeaux-fonce: #6a1220;
     --creme: #fbf6ec;
     --creme-2: #f3e9d6;
     --encre: #1f1a17;
     --gris: #4a423c;
+    --gris-clair: #6b625a;
     --vert: #2f6b3a;
+    --or: #e0a100;
     --ligne: #d9ccb4;
-    --taille: 20px;
+    --texte: "Atkinson Hyperlegible", Verdana, Arial, sans-serif;
+    --titre: "Playfair Display", Georgia, serif;
   }
   * { box-sizing: border-box; }
-  html { font-size: var(--taille); scroll-behavior: smooth; }
+  /* Tailles en % : le site suit le réglage « taille du texte » du téléphone ou du navigateur (125 % = 20 px par défaut) */
+  html { font-size: 125%; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   body {
     margin: 0;
     background: var(--creme);
     color: var(--encre);
-    font-family: "Atkinson Hyperlegible", Verdana, Arial, sans-serif;
+    font-family: var(--texte);
     line-height: 1.55;
+    overflow-wrap: break-word;
   }
   img { max-width: 100%; height: auto; display: block; }
-  .accueil .conteneur > *, .infos-grille > * { min-width: 0; }
   a { color: var(--bordeaux); }
-  h1, h2, h3 { font-family: "Playfair Display", Georgia, serif; line-height: 1.15; margin: 0 0 .5em; }
+  h1, h2, h3 { font-family: var(--titre); line-height: 1.15; margin: 0 0 .5em; }
   h2 { font-size: 2.1rem; color: var(--bordeaux); }
   .conteneur { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
-  :focus-visible { outline: 4px solid #e0a100; outline-offset: 3px; }
+  :focus-visible { outline: 4px solid var(--or); outline-offset: 3px; }
+  .insecable { white-space: nowrap; }
+  [hidden] { display: none !important; }
+
+  .lien-evitement {
+    position: absolute; left: 8px; top: -100px; z-index: 30;
+    background: #fff; color: var(--bordeaux); font-weight: 700; padding: 12px 16px; border-radius: 10px;
+  }
+  .lien-evitement:focus { top: 8px; }
 
   /* ---------- En-tête ---------- */
   .entete {
-    position: sticky; top: 0; z-index: 10;
+    position: -webkit-sticky; position: sticky; top: 0; z-index: 10;
     background: var(--bordeaux); color: #fff;
     box-shadow: 0 2px 8px rgba(0,0,0,.2);
   }
-  .entete .conteneur { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 10px; padding-bottom: 10px; flex-wrap: wrap; }
-  .logo { font-family: "Playfair Display", Georgia, serif; font-size: 1.6rem; font-weight: 800; color: #fff; text-decoration: none; font-style: italic; }
-  .nav { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-left: auto; }
-  .nav a { color: #fff; text-decoration: none; font-weight: 700; padding: 10px 14px; border-radius: 10px; font-size: .95rem; }
-  .nav a:hover { background: rgba(255,255,255,.15); }
+  .entete .conteneur { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding-top: 10px; padding-bottom: 10px; }
+  .logo { font-family: var(--titre); font-size: 1.6rem; font-weight: 800; font-style: italic; color: #fff; text-decoration: none; white-space: nowrap; margin-right: 12px; }
+  .nav { display: flex; flex-wrap: wrap; align-items: center; margin-left: auto; }
+  .nav a { color: #fff; text-decoration: none; font-weight: 700; padding: 10px 14px; border-radius: 10px; font-size: .95rem; white-space: nowrap; }
 
   /* ---------- Bouton ---------- */
   .bouton {
-    display: inline-flex; align-items: center; justify-content: center; gap: .5em;
-    min-height: 60px; padding: 14px 26px; border-radius: 14px;
-    font-weight: 700; font-size: 1.15rem; text-decoration: none; cursor: pointer; border: 3px solid transparent;
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 60px; max-width: 100%; padding: 14px 26px; border-radius: 14px; border: 3px solid transparent;
+    font-weight: 700; font-size: 1.15rem; text-align: center; text-decoration: none; cursor: pointer;
   }
+  .bouton svg { width: 1.3em; height: 1.3em; flex: none; margin-right: .5em; }
   .bouton-principal { background: var(--bordeaux); color: #fff; }
-  .bouton-principal:hover { background: var(--bordeaux-fonce); }
   .bouton-secondaire { background: #fff; color: var(--bordeaux); border-color: var(--bordeaux); }
-  .bouton-secondaire:hover { background: var(--creme-2); }
-  .bouton svg { width: 1.3em; height: 1.3em; flex: none; }
 
   /* ---------- Accueil ---------- */
   .accueil { padding: 40px 0 48px; }
-  .accueil .conteneur { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
+  .accueil .conteneur { display: grid; grid-template-columns: 1.1fr 1fr; grid-gap: 40px; gap: 40px; align-items: center; }
+  .accueil .conteneur > * { min-width: 0; }
   .accueil h1 { font-size: 3.2rem; color: var(--bordeaux); font-style: italic; margin-bottom: .15em; }
-  .accroche { font-size: 1.4rem; font-weight: 700; margin: 0 0 .6em; }
   .accueil p { font-size: 1.1rem; margin: 0 0 1em; }
-  .statut {
-    display: inline-flex; align-items: center; gap: 10px;
+  .accueil .accroche { font-size: 1.25rem; font-weight: 700; margin-bottom: .7em; }
+  .accueil .statut {
+    display: inline-flex; align-items: center;
     background: #fff; border: 2px solid var(--ligne); border-radius: 999px;
-    padding: 8px 18px 8px 14px; font-weight: 700; font-size: 1.05rem; margin: 0 0 1em;
+    padding: 8px 18px 8px 14px; font-weight: 700; font-size: 1.05rem; line-height: 1.3;
   }
-  .statut[hidden] { display: none; }
-  .statut .pastille { width: 14px; height: 14px; border-radius: 50%; background: #8a7f76; flex: none; }
+  .statut .pastille { width: 14px; height: 14px; border-radius: 50%; background: var(--gris-clair); flex: none; margin-right: 10px; }
   .statut.ouvert { border-color: var(--vert); color: var(--vert); }
   .statut.ouvert .pastille { background: var(--vert); }
-  .statut.bientot .pastille { background: #e0a100; }
-  .boutons { display: flex; flex-wrap: wrap; gap: 14px; }
-  .photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+  .statut.bientot .pastille { background: var(--or); }
+  .boutons { display: flex; flex-wrap: wrap; margin-bottom: -14px; }
+  .boutons .bouton { margin: 0 14px 14px 0; }
   .photo { border-radius: 18px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,.18); border: 6px solid #fff; }
+  .photo img { width: 100%; }
 
   .bandeau-maison {
     list-style: none; margin: 0; padding: 16px; background: var(--vert); color: #fff;
-    display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 14px;
+    display: flex; flex-wrap: wrap; justify-content: center;
     font-weight: 700; font-size: 1.1rem; text-align: center;
   }
-  .bandeau-maison li + li::before { content: "·"; margin-right: 14px; opacity: .7; }
+  .bandeau-maison li + li::before { content: "·"; margin: 0 14px; opacity: .7; }
 
   /* ---------- Carte ---------- */
   section { padding: 56px 0; }
+  section, .categorie, .onglets, table.horaires { scroll-margin-top: 90px; }
   .intro-section { font-size: 1.1rem; margin: 0 0 1.5em; max-width: 46em; }
-  .onglets { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 22px; scroll-margin-top: 90px; }
+  .intro-section a { font-weight: 700; }
+  .onglets { display: flex; flex-wrap: wrap; margin: 0 0 12px; }
   .onglets a {
+    display: inline-flex; align-items: center; justify-content: center; text-align: center;
+    min-height: 52px; padding: 10px 20px; margin: 0 10px 10px 0; border-radius: 999px;
     background: #fff; border: 2px solid var(--bordeaux); color: var(--bordeaux);
-    padding: 10px 20px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 1.05rem; min-height: 52px; display: inline-flex; align-items: center;
+    text-decoration: none; font-weight: 700; font-size: 1.05rem;
   }
-  .onglets a:hover, .onglets a.actif { background: var(--bordeaux); color: #fff; }
+  .onglets a.actif { background: var(--bordeaux); color: #fff; }
+  .onglets-bas { margin: 0; }
+  .onglets-titre { font-weight: 700; margin: 26px 0 10px; }
+  /* Sans JavaScript, toutes les rubriques restent visibles et le rappel du bas est inutile */
   .js-onglets .categorie:not(.actif) { display: none; }
+  html:not(.js-onglets) .onglets-titre, html:not(.js-onglets) .onglets-bas { display: none; }
 
-  .categorie { background: #fff; border-radius: 18px; padding: 28px 28px 20px; margin-bottom: 30px; box-shadow: 0 2px 10px rgba(0,0,0,.06); scroll-margin-top: 100px; }
-  .categorie h3 { font-size: 1.9rem; color: var(--encre); border-bottom: 4px solid var(--bordeaux); padding-bottom: .3em; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-  .categorie h3 small { font-family: "Atkinson Hyperlegible", sans-serif; font-size: 1rem; color: var(--gris); font-weight: 700; }
-  .plats { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; column-gap: 44px; }
+  .categorie { background: #fff; border-radius: 18px; padding: 28px 28px 20px; margin-bottom: 30px; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+  .js-onglets .categorie { margin-bottom: 0; }
+  .categorie h3 { font-size: 1.9rem; color: var(--encre); border-bottom: 4px solid var(--bordeaux); padding-bottom: .3em; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; }
+  .categorie h3 small { font-family: var(--texte); font-size: 1rem; color: var(--gris); font-weight: 700; }
+  .categorie-intro { color: var(--gris); font-size: 1.05rem; margin: 0 0 6px; }
+  .plats { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-column-gap: 44px; column-gap: 44px; }
   .plat { padding: 14px 0; border-bottom: 1px dashed var(--ligne); break-inside: avoid; }
-  .plat-haut { display: flex; align-items: baseline; gap: 10px; }
-  .plat-nom { font-weight: 700; font-size: 1.2rem; }
-  .plat-points { flex: 1; border-bottom: 3px dotted #b9a98c; transform: translateY(-5px); min-width: 20px; }
+  .plat-haut { display: flex; align-items: baseline; }
+  .plat-nom { font-weight: 700; font-size: 1.2rem; min-width: 0; }
+  .plat-nom small { font-size: .8em; }
+  .plat-points { flex: 1; border-bottom: 3px dotted #b9a98c; transform: translateY(-5px); min-width: 20px; margin: 0 10px; }
   .plat-prix { font-weight: 700; font-size: 1.2rem; color: var(--bordeaux); white-space: nowrap; }
   .plat-desc { margin: 4px 0 0; color: var(--gris); font-size: 1rem; }
-  .badge { display: inline-block; background: var(--vert); color: #fff; font-size: .75rem; font-weight: 700; padding: 2px 8px; border-radius: 6px; vertical-align: middle; margin-left: 6px; }
-  .badge-nouveau { background: #e0a100; color: var(--encre); }
+  .badge { display: inline-block; background: var(--vert); color: #fff; font-size: .75rem; font-weight: 700; padding: 2px 8px; border-radius: 6px; vertical-align: middle; margin-left: 6px; white-space: nowrap; }
+  .badge-nouveau { background: var(--or); color: var(--encre); }
   .plat.nouveau { background: #fdf3d8; margin: 0 -12px; padding-left: 12px; padding-right: 12px; border-radius: 8px; }
   .note { background: var(--creme); border-radius: 10px; padding: 14px 18px; margin: 18px 0 8px; font-size: 1rem; }
   .note p { margin: .3em 0; }
+  .encart-pain { background: var(--vert); color: #fff; border-radius: 12px; padding: 14px 18px; margin: 0 0 12px; font-size: 1.15rem; font-weight: 700; }
 
   .titre-formules { font-weight: 700; font-size: 1.15rem; margin: 22px 0 4px; }
-  table.tarifs { width: 100%; border-collapse: collapse; font-size: 1.1rem; margin: 10px 0 10px; }
+  .table-defile { overflow-x: auto; margin: 10px 0; }
+  table.tarifs { width: 100%; border-collapse: collapse; font-size: 1.1rem; }
   table.tarifs th, table.tarifs td { border: 2px solid var(--ligne); padding: 12px 10px; text-align: center; }
   table.tarifs thead th { background: var(--bordeaux); color: #fff; }
   table.tarifs tbody th { background: var(--creme-2); text-align: left; }
   table.tarifs td { font-weight: 700; color: var(--bordeaux); white-space: nowrap; }
 
-  section, .categorie { scroll-margin-top: 80px; }
-
-  /* ---------- Fait maison ---------- */
-  .encart-pain {
-    display: flex; gap: 14px; align-items: center;
-    background: var(--vert); color: #fff; border-radius: 12px; padding: 14px 18px; margin: 0 0 12px;
-    font-size: 1.15rem; font-weight: 700;
-  }
-
-
   /* ---------- Horaires / Accès ---------- */
   #infos { background: var(--creme-2); }
-  .infos-grille { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+  .infos-grille { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-gap: 30px; gap: 30px; }
   .carte-info { background: #fff; border-radius: 18px; padding: 28px; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
   .carte-info h3 { font-size: 1.6rem; color: var(--bordeaux); }
-  .gros { font-size: 1.5rem; font-weight: 700; margin: .2em 0; }
   .carte-info p { margin: .5em 0; }
-  table.horaires { scroll-margin-top: 90px; width: 100%; border-collapse: collapse; font-size: 1.2rem; margin: 6px 0 10px; }
+  .carte-info .espace { margin-top: 1em; }
+  .gros { font-size: 1.5rem; font-weight: 700; }
+  table.horaires { width: 100%; border-collapse: collapse; font-size: 1.2rem; margin: 6px 0 10px; }
   table.horaires th, table.horaires td { padding: 9px 4px; border-bottom: 1px solid var(--ligne); text-align: left; }
-  table.horaires td { text-align: right; font-weight: 700; color: var(--vert); white-space: nowrap; }
-  table.horaires tr.ferme th, table.horaires tr.ferme td { color: #8a7f76; font-weight: 400; }
+  table.horaires td { text-align: right; font-weight: 700; color: var(--vert); }
+  table.horaires tr.ferme th, table.horaires tr.ferme td { color: var(--gris-clair); font-weight: 400; }
   table.horaires tr.aujourdhui { background: var(--creme-2); }
   table.horaires tr.aujourdhui th::after { content: "aujourd'hui"; display: block; font-weight: 400; font-size: .75em; }
-  .carte-info .bouton { margin: 6px 8px 0 0; font: inherit; font-weight: 700; font-size: 1.05rem; min-height: 54px; padding: 10px 20px; }
+  .carte-info .bouton { font-size: 1.05rem; min-height: 54px; padding: 10px 20px; margin-top: 6px; }
   .plan { display: block; border: 0; width: 100%; height: 320px; border-radius: 14px; margin-top: 14px; }
-  .telephone-geant { font-size: 2.2rem; font-weight: 700; color: var(--bordeaux); text-decoration: none; display: inline-block; margin: .1em 0 .3em; letter-spacing: .02em; white-space: nowrap; }
+  .telephone-geant { display: inline-block; font-size: 2.2rem; font-size: min(2.2rem, 3.9vw); font-weight: 700; color: var(--bordeaux); text-decoration: none; margin: .1em 0 .3em; letter-spacing: .02em; white-space: nowrap; }
 
   /* ---------- Pied ---------- */
-  footer { background: var(--encre); color: #eee; padding: 34px 0 110px; font-size: 1rem; }
+  footer { background: var(--encre); color: #eee; padding: 34px 0; font-size: 1rem; }
   footer a { color: #fff; }
-  footer .conteneur { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  footer .conteneur { display: flex; flex-wrap: wrap; justify-content: space-between; }
+  footer .conteneur > div { margin: 4px 20px 4px 0; }
 
-  /* ---------- Bouton appel fixe (mobile) ---------- */
+  /* ---------- Boutons flottants ---------- */
   .appel-fixe {
-    display: none; position: fixed; left: 16px; right: 16px; bottom: 14px; z-index: 20;
+    display: none; position: fixed; left: 16px; right: 16px; z-index: 20;
+    bottom: 14px; bottom: calc(14px + env(safe-area-inset-bottom, 0px));
     box-shadow: 0 6px 20px rgba(0,0,0,.35); font-size: 1.25rem;
   }
-
   .retour-haut {
-    position: fixed; right: 16px; bottom: 16px; z-index: 15;
+    position: fixed; right: 16px; z-index: 15;
+    bottom: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px));
     display: flex; align-items: center; justify-content: center;
     width: 52px; height: 52px; border-radius: 50%;
     background: #fff; color: var(--bordeaux); border: 2px solid var(--bordeaux);
     box-shadow: 0 4px 14px rgba(0,0,0,.25);
   }
-  .retour-haut[hidden] { display: none; }
   .retour-haut svg { width: 26px; height: 26px; }
 
-  @media (max-width: 900px) {
-    .retour-haut { bottom: 88px; }
-    :root { --taille: 19px; }
-    .accueil .conteneur, .infos-grille { grid-template-columns: 1fr; }
-    .accueil h1 { font-size: 2.6rem; }
-    .plats { grid-template-columns: 1fr; }
-    .bandeau-maison { flex-direction: column; gap: 2px; font-size: 1rem; padding: 12px 16px; }
-    .bandeau-maison li + li::before { content: none; }
-    .entete .conteneur { flex-wrap: nowrap; gap: 8px; padding-top: 8px; padding-bottom: 8px; }
-    .logo { font-size: 1.3rem; white-space: nowrap; }
-    .nav { flex-wrap: nowrap; gap: 2px; }
-    .nav a.lien-nav { padding: 10px 7px; font-size: .9rem; white-space: nowrap; text-decoration: underline; text-underline-offset: 4px; }
-    .nav-long { display: none; }
-    section, .categorie, table.horaires { scroll-margin-top: 70px; }
-    .appel-fixe { display: flex; }
-
-    /* Page plus courte sur téléphone */
-    .accueil { padding: 24px 0 30px; }
-    .accueil .conteneur { gap: 24px; }
-    section { padding: 36px 0; }
-    .onglets { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px; }
-    .onglets a { justify-content: center; padding: 8px 10px; }
-
+  /* Survol : seulement avec une souris, pour ne pas rester « collé » après un toucher */
+  @media (hover: hover) {
+    .nav a:hover { background: rgba(255,255,255,.15); }
+    .bouton-principal:hover { background: var(--bordeaux-fonce); }
+    .bouton-secondaire:hover { background: var(--creme-2); }
+    .onglets a:hover { background: var(--bordeaux); color: #fff; }
   }
-  @media (max-width: 520px) {
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  /* ---------- Tablette et téléphone ----------
+     Largeurs en em : elles suivent la taille de texte réglée par le visiteur
+     (56.25em = 900 px et 32.5em = 520 px avec le réglage par défaut). */
+  @media (max-width: 56.25em) {
+    html { font-size: 118.75%; }
+    section { padding: 36px 0; }
+    section, .categorie, .onglets, table.horaires { scroll-margin-top: 70px; }
+
+    .entete .conteneur { padding-top: 8px; padding-bottom: 8px; }
+    .logo { font-size: 1.3rem; font-size: min(1.3rem, 7.5vw); }
+    .nav a { padding: 10px 7px; font-size: .9rem; text-decoration: underline; text-underline-offset: 4px; }
+    .nav-long { display: none; }
+
+    .accueil { padding: 24px 0 30px; }
+    .accueil .conteneur { grid-template-columns: minmax(0, 1fr); grid-gap: 24px; gap: 24px; }
+    .accueil h1 { font-size: 2.6rem; }
+    .bandeau-maison { flex-direction: column; font-size: 1rem; padding: 12px 16px; }
+    .bandeau-maison li + li::before { content: none; }
+
+    /* 2 colonnes, ou 1 seule si le texte est réglé très grand */
+    .onglets { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(7.5em, 100%), 1fr)); grid-gap: 8px; gap: 8px; margin-bottom: 16px; }
+    .onglets a { margin: 0; padding: 8px 10px; }
+    .plats { grid-template-columns: minmax(0, 1fr); }
+    .infos-grille { grid-template-columns: minmax(0, 1fr); }
+
+    .telephone-geant { font-size: 2.2rem; font-size: min(2.2rem, 8vw); }
+    footer { padding-bottom: 110px; }
+    .appel-fixe { display: flex; }
+    .retour-haut { bottom: 88px; bottom: calc(88px + env(safe-area-inset-bottom, 0px)); }
+  }
+  @media (max-width: 32.5em) {
+    h2 { font-size: 1.8rem; font-size: min(1.8rem, 9.5vw); }
+    .accueil h1 { font-size: 2.3rem; font-size: min(2.3rem, 12vw); }
+    .boutons .bouton { width: 100%; margin-right: 0; font-size: 1.05rem; font-size: min(1.05rem, 5.4vw); padding: 12px 14px; }
     .categorie { padding: 20px 16px 14px; }
-    .accueil h1 { font-size: 2.3rem; }
-    h2 { font-size: 1.8rem; }
-    .boutons .bouton { width: 100%; }
-    .boutons .bouton { font-size: 1.05rem; padding: 12px 14px; white-space: nowrap; }
-    table.tarifs { font-size: .95rem; }
+    .categorie h3 { font-size: 1.6rem; font-size: min(1.6rem, 9vw); }
+    table.tarifs { font-size: .95rem; font-size: min(.95rem, 4.8vw); }
     table.tarifs th, table.tarifs td { padding: 10px 4px; }
     .carte-info { padding: 22px 16px; }
-    .telephone-geant { font-size: 1.75rem; }
-    .appel-fixe { font-size: 1.1rem; white-space: nowrap; padding: 12px 16px; min-height: 56px; }
+    .carte-info .bouton { font-size: 1.05rem; font-size: min(1.05rem, 5.4vw); padding: 10px 14px; }
+    .telephone-geant { font-size: 1.75rem; font-size: min(1.75rem, 8vw); }
+    table.horaires { font-size: 1.05rem; font-size: min(1.05rem, 5.5vw); }
+    .appel-fixe { font-size: 1.1rem; font-size: min(1.1rem, 5.4vw); padding: 12px 16px; min-height: 56px; }
+  }
+  /* Écran très étroit (ou texte réglé très grand) : le prix passe sous le nom du plat */
+  @media (max-width: 18.75em) {
+    .plat-haut { flex-wrap: wrap; }
+    .plat-points { display: none; }
+    .plat-prix { margin-left: auto; }
   }
 
-  @media print {
-    :root { --taille: 13px; }
-    .entete, .accueil, .bandeau-maison, .onglets, #infos, footer, .appel-fixe, .retour-haut, .pas-imprimer { display: none !important; }
-    body { background: #fff; }
-    section { padding: 0; }
-    .categorie { box-shadow: none; border: 1px solid #ccc; padding: 12px; margin-bottom: 12px; }
-    .js-onglets .categorie:not(.actif) { display: block; }
-    .imprime-seulement { display: block !important; }
-  }
+  /* ---------- Impression : la carte seule ---------- */
   .imprime-seulement { display: none; }
+  @media print {
+    html { font-size: 81.25%; }
+    body { background: #fff; }
+    .lien-evitement, .entete, .accueil, .bandeau-maison, .onglets, .onglets-titre, #infos, footer, .appel-fixe, .retour-haut { display: none !important; }
+    section { padding: 0; }
+    .js-onglets .categorie:not(.actif) { display: block; }
+    .categorie, .js-onglets .categorie { box-shadow: none; border: 1px solid #ccc; padding: 12px; margin-bottom: 12px; }
+    .imprime-seulement { display: block; }
+  }
 </style>
 </head>
 <body>
+<a class="lien-evitement" href="#carte">Aller directement à la carte</a>
 
 <header class="entete">
   <div class="conteneur">
@@ -282,15 +337,18 @@
         <p class="statut" id="statut" hidden><span class="pastille"></span><span id="statut-texte"></span></p>
         <p>Pizzas, burgers et tacos. <strong>Commandez par téléphone</strong> et passez les chercher, ou mangez sur notre terrasse.</p>
         <div class="boutons">
-          <a class="bouton bouton-principal" href="tel:+33558985843" data-goatcounter-click="appel-haut-de-page" data-goatcounter-title="Appel (haut de page)">
+          <a class="bouton bouton-principal" id="appel-principal" href="tel:+33558985843" data-goatcounter-click="appel-haut-de-page" data-goatcounter-title="Appel (haut de page)">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
-            <span>Appeler le <span style="white-space:nowrap">05 58 98 58 43</span></span>
+            <span>Appeler le <span class="insecable">05 58 98 58 43</span></span>
           </a>
           <a class="bouton bouton-secondaire" href="#carte">Voir la carte</a>
         </div>
       </div>
       <div class="photo">
-        <img src="images/devanture.jpg" width="1600" height="1200" alt="La pizzeria Pizza Dello à Taller : volets bordeaux, terrasse sous une pergola en bois avec tables de pique-nique, ardoise « Menu tacos » devant.">
+        <picture>
+          <source type="image/webp" srcset="images/devanture-800.webp 800w, images/devanture-1200.webp 1200w" sizes="(max-width: 56.25em) calc(100vw - 44px), 500px">
+          <img src="images/devanture.jpg" width="1600" height="1200" fetchpriority="high" decoding="async" alt="La pizzeria Pizza Dello à Taller : volets bordeaux, terrasse sous une pergola en bois avec tables de pique-nique, ardoise « Menu tacos » devant.">
+        </picture>
       </div>
     </div>
   </div>
@@ -306,13 +364,13 @@
     <div class="conteneur">
       <h2>Notre carte</h2>
       <p class="imprime-seulement"><strong>Pizza Dello</strong> – Le Bourg, 40260 Taller – Tél. 05 58 98 58 43 – À emporter</p>
-      <p class="intro-section">Choisissez tranquillement, puis <strong>appelez-nous au 05 58 98 58 43</strong> pour commander.</p>
-      <div class="onglets pas-imprimer" id="onglets">
+      <p class="intro-section">Choisissez tranquillement, puis appelez-nous au <a href="tel:+33558985843" data-goatcounter-click="appel-carte" data-goatcounter-title="Appel (carte)">05 58 98 58 43</a> pour commander.</p>
+      <nav class="onglets" id="onglets" aria-label="Rubriques de la carte">
         <a href="#pizzas">Pizzas</a>
         <a href="#burgers">Burgers</a>
         <a href="#tacos">Tacos</a>
         <a href="#petites-faims">Petites faims</a>
-      </div>
+      </nav>
 
       <!-- PIZZAS -->
       <div class="categorie" id="pizzas">
@@ -353,7 +411,7 @@
       <div class="categorie" id="burgers">
         <h3>Nos burgers</h3>
         <p class="encart-pain">Tous nos burgers sont servis dans un pain fait maison.</p>
-        <p class="plat-desc" style="font-size:1.05rem;margin:0 0 6px">Tous nos burgers contiennent&nbsp;: salade, tomates, oignons, cornichons, sauce burger, et au choix <strong>un steak de 150 g</strong> ou <strong>un filet de poulet pané</strong>.</p>
+        <p class="categorie-intro">Tous nos burgers contiennent&nbsp;: salade, tomates, oignons, cornichons, sauce burger, et au choix <strong>un steak de 150 g</strong> ou <strong>un filet de poulet pané</strong>.</p>
         <ul class="plats">
           <li class="plat"><div class="plat-haut"><span class="plat-nom">Classique</span><span class="plat-points"></span><span class="plat-prix">10,00 €</span></div><p class="plat-desc">Cheddar</p></li>
           <li class="plat"><div class="plat-haut"><span class="plat-nom">Savoyard</span><span class="plat-points"></span><span class="plat-prix">10,00 €</span></div><p class="plat-desc">Cheddar, reblochon</p></li>
@@ -364,24 +422,27 @@
           <li class="plat"><div class="plat-haut"><span class="plat-nom">Montagnard</span><span class="plat-points"></span><span class="plat-prix">12,50 €</span></div><p class="plat-desc">Poitrine fumée, raclette, galette de pomme de terre</p></li>
         </ul>
         <p class="titre-formules">Avec des frites ou en menu&nbsp;:</p>
-        <table class="tarifs">
-          <thead><tr><th scope="col">Formule</th><th scope="col">Tous les burgers</th><th scope="col">Montagnard</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">Burger seul</th><td>10,00 €</td><td>12,50 €</td></tr>
-            <tr><th scope="row">Burger + frites</th><td>11,50 €</td><td>13,50 €</td></tr>
-            <tr><th scope="row">Burger + frites + canette 33 cl</th><td>13,00 €</td><td>15,00 €</td></tr>
-          </tbody>
-        </table>
+        <div class="table-defile">
+          <table class="tarifs">
+            <thead><tr><th scope="col">Formule</th><th scope="col">Tous les burgers</th><th scope="col">Montagnard</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Burger seul</th><td>10,00 €</td><td>12,50 €</td></tr>
+              <tr><th scope="row">Burger + frites</th><td>11,50 €</td><td>13,50 €</td></tr>
+              <tr><th scope="row">Burger + frites + canette 33 cl</th><td>13,00 €</td><td>15,00 €</td></tr>
+            </tbody>
+          </table>
+        </div>
         <div class="note">
           <p><strong>Steak haché en plus :</strong> 4,00 €</p>
           <p>Viande d'origine française ou UE, façon bouchère (selon arrivage). Sauces ketchup et mayonnaise comprises.</p>
         </div>
       </div>
 
-        <!-- TACOS -->
-        <div class="categorie" id="tacos">
-          <h3>Nos tacos</h3>
-          <p class="plat-desc" style="font-size:1.05rem">Une grande galette de blé garnie, pliée et grillée.<br>Viande au choix : <strong>cordon bleu, steak haché, kebab ou merguez</strong>.<br>Tous nos tacos sont garnis de sauce blanche, sauce fromagère maison, salade, tomates, oignons et frites.</p>
+      <!-- TACOS -->
+      <div class="categorie" id="tacos">
+        <h3>Nos tacos</h3>
+        <p class="categorie-intro">Une grande galette de blé garnie, pliée et grillée.<br>Viande au choix : <strong>cordon bleu, steak haché, kebab ou merguez</strong>.<br>Tous nos tacos sont garnis de sauce blanche, sauce fromagère maison, salade, tomates, oignons et frites.</p>
+        <div class="table-defile">
           <table class="tarifs">
             <thead><tr><th scope="col"></th><th scope="col">Seul</th><th scope="col">+ frites</th><th scope="col">+ frites + soda</th></tr></thead>
             <tbody>
@@ -391,21 +452,30 @@
             </tbody>
           </table>
         </div>
+      </div>
 
-        <!-- PETITES FAIMS -->
-        <div class="categorie" id="petites-faims">
-          <h3>Petites faims &amp; douceurs</h3>
-          <ul class="plats">
-            <li class="plat nouveau"><div class="plat-haut"><span class="plat-nom">Crispy épicés (6 pièces) + frites <span class="badge badge-nouveau">Nouveau</span></span><span class="plat-points"></span><span class="plat-prix">9,50 €</span></div></li>
-            <li class="plat nouveau"><div class="plat-haut"><span class="plat-nom">Crispy épicés (4 pièces) + nuggets (4 pièces) <span class="badge badge-nouveau">Nouveau</span></span><span class="plat-points"></span><span class="plat-prix">9,50 €</span></div></li>
-            <li class="plat"><div class="plat-haut"><span class="plat-nom">Frites</span><span class="plat-points"></span><span class="plat-prix">2,50 €</span></div></li>
-            <li class="plat"><div class="plat-haut"><span class="plat-nom">Nuggets (7 pièces)</span><span class="plat-points"></span><span class="plat-prix">6,50 €</span></div></li>
-            <li class="plat"><div class="plat-haut"><span class="plat-nom">Nuggets + frites</span><span class="plat-points"></span><span class="plat-prix">8,00 €</span></div></li>
-            <li class="plat"><div class="plat-haut"><span class="plat-nom">Boîte Dello (12 pièces)</span><span class="plat-points"></span><span class="plat-prix">10,00 €</span></div><p class="plat-desc">3 camemberts, 3 nuggets, 3 chili nuggets, 3 oignons</p></li>
-            <li class="plat"><div class="plat-haut"><span class="plat-nom">Boîte Dello (20 pièces)</span><span class="plat-points"></span><span class="plat-prix">14,50 €</span></div><p class="plat-desc">5 camemberts, 5 nuggets, 5 chili nuggets, 5 oignons</p></li>
-            <li class="plat"><div class="plat-haut"><span class="plat-nom">Gaufre belge au sucre</span><span class="plat-points"></span><span class="plat-prix">3,50 €</span></div></li>
-          </ul>
-        </div>
+      <!-- PETITES FAIMS -->
+      <div class="categorie" id="petites-faims">
+        <h3>Petites faims &amp; douceurs</h3>
+        <ul class="plats">
+          <li class="plat nouveau"><div class="plat-haut"><span class="plat-nom">Crispy épicés (6 pièces) + frites <span class="badge badge-nouveau">Nouveau</span></span><span class="plat-points"></span><span class="plat-prix">9,50 €</span></div></li>
+          <li class="plat nouveau"><div class="plat-haut"><span class="plat-nom">Crispy épicés (4 pièces) + nuggets (4 pièces) <span class="badge badge-nouveau">Nouveau</span></span><span class="plat-points"></span><span class="plat-prix">9,50 €</span></div></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Frites</span><span class="plat-points"></span><span class="plat-prix">2,50 €</span></div></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Nuggets (7 pièces)</span><span class="plat-points"></span><span class="plat-prix">6,50 €</span></div></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Nuggets + frites</span><span class="plat-points"></span><span class="plat-prix">8,00 €</span></div></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Boîte Dello (12 pièces)</span><span class="plat-points"></span><span class="plat-prix">10,00 €</span></div><p class="plat-desc">3 camemberts, 3 nuggets, 3 chili nuggets, 3 oignons</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Boîte Dello (20 pièces)</span><span class="plat-points"></span><span class="plat-prix">14,50 €</span></div><p class="plat-desc">5 camemberts, 5 nuggets, 5 chili nuggets, 5 oignons</p></li>
+          <li class="plat"><div class="plat-haut"><span class="plat-nom">Gaufre belge au sucre</span><span class="plat-points"></span><span class="plat-prix">3,50 €</span></div></li>
+        </ul>
+      </div>
+
+      <p class="onglets-titre">Voir une autre rubrique :</p>
+      <nav class="onglets onglets-bas" aria-label="Autres rubriques de la carte">
+        <a href="#pizzas">Pizzas</a>
+        <a href="#burgers">Burgers</a>
+        <a href="#tacos">Tacos</a>
+        <a href="#petites-faims">Petites faims</a>
+      </nav>
     </div>
   </section>
 
@@ -421,13 +491,13 @@
               <tr class="ferme"><th scope="row">Lundi</th><td>Fermé</td></tr>
               <tr class="ferme"><th scope="row">Mardi</th><td>Fermé</td></tr>
               <tr class="ferme"><th scope="row">Mercredi</th><td>Fermé</td></tr>
-              <tr><th scope="row">Jeudi</th><td>18 h 30 – 20 h 30</td></tr>
-              <tr><th scope="row">Vendredi</th><td>18 h – 21 h</td></tr>
-              <tr><th scope="row">Samedi</th><td>18 h – 21 h</td></tr>
-              <tr><th scope="row">Dimanche</th><td>18 h – 20 h 30</td></tr>
+              <tr data-ouvre="18:30" data-ferme="20:30"><th scope="row">Jeudi</th><td>18&nbsp;h&nbsp;30 – 20&nbsp;h&nbsp;30</td></tr>
+              <tr data-ouvre="18:00" data-ferme="21:00"><th scope="row">Vendredi</th><td>18&nbsp;h – 21&nbsp;h</td></tr>
+              <tr data-ouvre="18:00" data-ferme="21:00"><th scope="row">Samedi</th><td>18&nbsp;h – 21&nbsp;h</td></tr>
+              <tr data-ouvre="18:00" data-ferme="20:30"><th scope="row">Dimanche</th><td>18&nbsp;h – 20&nbsp;h&nbsp;30</td></tr>
             </tbody>
           </table>
-          <p style="margin-top:1em">Pour commander, un seul numéro&nbsp;:</p>
+          <p class="espace">Pour commander, un seul numéro&nbsp;:</p>
           <a class="telephone-geant" href="tel:+33558985843" data-goatcounter-click="appel-horaires" data-goatcounter-title="Appel (horaires)">05 58 98 58 43</a>
           <p>Vos pizzas sont préparées à la commande. Passez les récupérer à l'heure convenue.</p>
           <p><strong>Paiement :</strong> carte bancaire, espèces et tickets restaurant.</p>
@@ -455,76 +525,139 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>
 </a>
 
-<a class="bouton bouton-principal appel-fixe" href="tel:+33558985843" data-goatcounter-click="appel-bouton-mobile" data-goatcounter-title="Appel (bouton mobile)">
+<a class="bouton bouton-principal appel-fixe" id="appel-fixe" href="tel:+33558985843" data-goatcounter-click="appel-bouton-mobile" data-goatcounter-title="Appel (bouton mobile)">
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
   Appeler pour commander
 </a>
 
 <script>
   (function () {
-    // Horaires en minutes depuis minuit, lundi = 0. À modifier ici ET dans le tableau des horaires.
-    var horaires = [null, null, null, [18 * 60 + 30, 20 * 60 + 30], [18 * 60, 21 * 60], [18 * 60, 21 * 60], [18 * 60, 20 * 60 + 30]];
-    var nomsJours = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'];
-    function heure(m) { return Math.floor(m / 60) + ' h' + (m % 60 ? ' ' + ('0' + m % 60).slice(-2) : ''); }
-    // Jour et heure à Taller, même si le visiteur est ailleurs
-    var jour, minutes;
-    try {
-      var parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Paris', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(new Date());
-      var v = {}; parts.forEach(function (x) { v[x.type] = x.value; });
-      jour = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].indexOf(v.weekday);
-      minutes = (+v.hour % 24) * 60 + +v.minute;
-    } catch (e) {
-      var d = new Date(); jour = (d.getDay() + 6) % 7; minutes = d.getHours() * 60 + d.getMinutes();
-    }
-    var lignes = document.querySelectorAll('table.horaires tbody tr');
-    if (lignes[jour]) lignes[jour].classList.add('aujourdhui');
+    'use strict';
 
-    var statut = document.getElementById('statut'), texte = document.getElementById('statut-texte');
-    var h = horaires[jour];
-    if (h && minutes >= h[0] && minutes < h[1]) {
-      statut.className = 'statut ouvert'; texte.textContent = "Ouvert en ce moment, jusqu'à " + heure(h[1]);
-    } else if (h && minutes < h[0]) {
-      statut.className = 'statut bientot'; texte.textContent = 'Ouvre ce soir à ' + heure(h[0]);
-    } else {
+    function tous(selecteur) { return Array.prototype.slice.call(document.querySelectorAll(selecteur)); }
+    // Chaque fonctionnalité est isolée : si l'une échoue sur un vieux navigateur, les autres continuent
+    function essayer(f) { try { f(); } catch (e) { if (window.console) console.error(e); } }
+
+    /* ---------- Ouvert / fermé ----------
+       Les horaires sont lus dans le tableau « Quand sommes-nous ouverts ? » (attributs data-ouvre / data-ferme).
+       Pour les changer, modifier ce tableau, et « openingHoursSpecification » en haut du fichier pour Google. */
+    var NOMS_JOURS = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'];
+
+    function enMinutes(hhmm) {
+      var m = /^(\d{1,2}):(\d{2})$/.exec(hhmm || '');
+      return m ? +m[1] * 60 + +m[2] : null;
+    }
+    function enHeure(minutes) {
+      return Math.floor(minutes / 60) + ' h' + (minutes % 60 ? ' ' + ('0' + minutes % 60).slice(-2) : '');
+    }
+    // Jour (lundi = 0) et minutes depuis minuit à Taller, où que soit le visiteur
+    function maintenantATaller() {
+      try {
+        var v = {};
+        new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Paris', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false })
+          .formatToParts(new Date()).forEach(function (p) { v[p.type] = p.value; });
+        var jour = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].indexOf(v.weekday);
+        var minutes = (+v.hour % 24) * 60 + +v.minute;
+        if (jour >= 0 && minutes >= 0) return { jour: jour, minutes: minutes };
+      } catch (e) { /* navigateur sans fuseaux horaires : on prend l'heure de l'appareil */ }
+      var d = new Date();
+      return { jour: (d.getDay() + 6) % 7, minutes: d.getHours() * 60 + d.getMinutes() };
+    }
+    function calculerStatut(horaires, jour, minutes) {
+      var h = horaires[jour];
+      if (h && minutes >= h[0] && minutes < h[1]) return { etat: 'ouvert', texte: "Ouvert en ce moment, jusqu'à " + enHeure(h[1]) };
+      if (h && minutes < h[0]) return { etat: 'bientot', texte: 'Ouvre ce soir à ' + enHeure(h[0]) };
       for (var n = 1; n <= 7; n++) {
         var j = (jour + n) % 7;
-        if (horaires[j]) { texte.textContent = 'Fermé — réouverture ' + (n === 1 ? 'demain' : nomsJours[j]) + ' à ' + heure(horaires[j][0]); break; }
+        if (horaires[j]) return { etat: 'ferme', texte: 'Fermé — réouverture ' + (n === 1 ? 'demain' : NOMS_JOURS[j]) + ' à ' + enHeure(horaires[j][0]) };
       }
+      return { etat: 'ferme', texte: 'Fermé' };
     }
-    statut.hidden = false;
 
-    // Carte en onglets : une seule rubrique affichée à la fois
-    var liens = document.querySelectorAll('#onglets a');
-    var rubriques = document.querySelectorAll('.categorie');
-    function montrer(id) {
-      var trouve = false;
-      rubriques.forEach(function (r) { if (r.id === id) trouve = true; });
-      if (!trouve) return false;
-      rubriques.forEach(function (r) { r.classList.toggle('actif', r.id === id); });
-      liens.forEach(function (a) {
-        var actif = a.getAttribute('href') === '#' + id;
-        a.classList.toggle('actif', actif);
-        if (actif) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+    essayer(function () {
+      var lignes = tous('#horaires tbody tr');
+      var statut = document.getElementById('statut');
+      var texte = document.getElementById('statut-texte');
+      if (lignes.length !== 7 || !statut || !texte) return;
+      var horaires = lignes.map(function (tr) {
+        var o = enMinutes(tr.getAttribute('data-ouvre')), f = enMinutes(tr.getAttribute('data-ferme'));
+        return o !== null && f !== null && f > o ? [o, f] : null;
       });
-      return true;
-    }
-    document.documentElement.classList.add('js-onglets');
-    if (!montrer(location.hash.slice(1))) montrer('pizzas');
-    liens.forEach(function (a) {
-      a.addEventListener('click', function (e) {
-        e.preventDefault();
-        montrer(a.getAttribute('href').slice(1));
-        // Si les onglets sont sortis de l'écran, on y revient
-        var o = document.getElementById('onglets');
-        if (o.getBoundingClientRect().top < 0) o.scrollIntoView();
-      });
+      function afficher() {
+        var t = maintenantATaller();
+        var s = calculerStatut(horaires, t.jour, t.minutes);
+        statut.className = 'statut ' + s.etat;
+        texte.textContent = s.texte;
+        statut.hidden = false;
+        lignes.forEach(function (tr, i) {
+          if (i === t.jour) tr.classList.add('aujourdhui'); else tr.classList.remove('aujourdhui');
+        });
+      }
+      afficher();
+      // La page peut rester ouverte longtemps : on garde l'affichage à jour
+      setInterval(afficher, 60000);
+      document.addEventListener('visibilitychange', function () { if (!document.hidden) afficher(); });
     });
-    window.addEventListener('hashchange', function () { montrer(location.hash.slice(1)); });
 
-    var haut = document.getElementById('retour-haut');
-    window.addEventListener('scroll', function () { haut.hidden = window.scrollY < 800; }, { passive: true });
+    /* ---------- Carte en onglets : une seule rubrique affichée à la fois ---------- */
+    essayer(function () {
+      var liens = tous('.onglets a');
+      var rubriques = tous('.categorie');
+      var haut = document.getElementById('onglets');
+      if (!liens.length || !rubriques.length || !haut) return;
+
+      function montrer(id) {
+        if (!rubriques.some(function (r) { return r.id === id; })) return false;
+        rubriques.forEach(function (r) {
+          if (r.id === id) r.classList.add('actif'); else r.classList.remove('actif');
+        });
+        liens.forEach(function (a) {
+          if (a.getAttribute('href') === '#' + id) { a.classList.add('actif'); a.setAttribute('aria-current', 'true'); }
+          else { a.classList.remove('actif'); a.removeAttribute('aria-current'); }
+        });
+        return true;
+      }
+      function depuisAdresse() { return montrer(decodeURIComponent(location.hash.slice(1))); }
+
+      var ok = false;
+      try { ok = depuisAdresse(); } catch (e) { /* adresse mal formée */ }
+      if (!ok) montrer(rubriques[0].id);
+      // Activé seulement une fois qu'une rubrique est affichée : sinon tout resterait visible, jamais l'inverse
+      document.documentElement.classList.add('js-onglets');
+
+      liens.forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          if (!montrer(a.getAttribute('href').slice(1))) return;
+          e.preventDefault();
+          // Si les onglets du haut ne sont plus à l'écran, on y revient pour voir le début de la rubrique
+          var r = haut.getBoundingClientRect();
+          if (r.top < 0 || r.bottom > window.innerHeight) haut.scrollIntoView();
+        });
+      });
+      window.addEventListener('hashchange', function () { essayer(depuisAdresse); });
+    });
+
+    /* ---------- Bouton « Appeler » fixe (téléphone) : seulement quand celui du haut n'est plus visible ---------- */
+    essayer(function () {
+      var fixe = document.getElementById('appel-fixe');
+      var principal = document.getElementById('appel-principal');
+      if (!fixe || !principal || !('IntersectionObserver' in window)) return;
+      fixe.hidden = true;
+      new IntersectionObserver(function (entrees) {
+        fixe.hidden = entrees[entrees.length - 1].isIntersecting;
+      }, { rootMargin: '-64px 0px 0px 0px' }).observe(principal);
+    });
+
+    /* ---------- Flèche « retour en haut » ---------- */
+    essayer(function () {
+      var fleche = document.getElementById('retour-haut');
+      if (!fleche) return;
+      function regler() { fleche.hidden = (window.pageYOffset || document.documentElement.scrollTop) < 800; }
+      window.addEventListener('scroll', regler, { passive: true });
+      regler();
+    });
   })();
 </script>
-<script data-goatcounter="https://popix.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://popix.goatcounter.com/count" async src="https://gc.zgo.at/count.v4.js" crossorigin="anonymous" integrity="sha384-nRw6qfbWyJha9LhsOtSb2YJDyZdKvvCFh0fJYlkquSFjUxp9FVNugbfy8q1jdxI+"></script>
 </body>
 </html>
