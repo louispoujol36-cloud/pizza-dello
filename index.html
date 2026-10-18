@@ -578,7 +578,7 @@
         date: d.getFullYear() + '-' + deux(d.getMonth() + 1) + '-' + deux(d.getDate()) + ' ' + deux(d.getHours()) + ':' + deux(d.getMinutes()) };
     }
     // Fermeture exceptionnelle (dates « AAAA-MM-JJ HH:MM », heure de Paris) : du dernier service jusqu'au jour de la réouverture
-    var FERMETURE = { du: '2026-10-18 20:30', au: '2026-11-05 00:00', texte: 'Fermé — réouverture le jeudi 5 novembre à 1800a0h00a030' };
+    var FERMETURE = { du: '2026-10-18 20:30', au: '2026-11-05 00:00', texte: 'Fermé — réouverture le jeudi 5 novembre à 18 h 30' };
 
     function calculerStatut(horaires, jour, minutes, date) {
       if (date >= FERMETURE.du && date < FERMETURE.au) return { etat: 'ferme', texte: FERMETURE.texte };
