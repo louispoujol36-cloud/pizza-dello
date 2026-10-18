@@ -144,9 +144,6 @@
   .photo { border-radius: 18px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,.18); border: 6px solid #fff; }
   .photo img { width: 100%; }
 
-  .fermeture { background: #fff3c4; border-bottom: 3px solid var(--or); color: var(--encre); padding: 16px 0; font-size: 1.15rem; text-align: center; }
-  .fermeture strong { display: block; font-size: 1.3rem; }
-
   .bandeau-maison {
     list-style: none; margin: 0; padding: 16px; background: var(--vert); color: #fff;
     display: flex; flex-wrap: wrap; justify-content: center;
@@ -332,14 +329,6 @@
 
 <main id="haut">
   <!-- ========== ACCUEIL ========== -->
-  <!-- Fermeture exceptionnelle : le bandeau disparaît tout seul à la date de data-jusqua (heure de Paris) -->
-  <div class="fermeture" id="fermeture" data-jusqua="2026-11-05 18:30">
-    <div class="conteneur">
-      <strong>Fermeture exceptionnelle du 19 octobre au 4 novembre</strong>
-      Réouverture le jeudi 5 novembre à 18&nbsp;h&nbsp;30.
-    </div>
-  </div>
-
   <div class="accueil">
     <div class="conteneur">
       <div>
@@ -591,11 +580,6 @@
       }
       return { etat: 'ferme', texte: 'Fermé' };
     }
-
-    essayer(function () {
-      var bandeau = document.getElementById('fermeture');
-      if (bandeau && maintenantATaller().date >= bandeau.getAttribute('data-jusqua')) bandeau.hidden = true;
-    });
 
     essayer(function () {
       var lignes = tous('#horaires tbody tr');
