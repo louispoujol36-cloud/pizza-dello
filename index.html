@@ -144,6 +144,9 @@
   .photo { border-radius: 18px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,.18); border: 6px solid #fff; }
   .photo img { width: 100%; }
 
+  .fermeture { background: #fff3c4; border-bottom: 3px solid var(--or); color: var(--encre); padding: 16px 0; font-size: 1.15rem; text-align: center; }
+  .fermeture strong { display: block; font-size: 1.3rem; }
+
   .bandeau-maison {
     list-style: none; margin: 0; padding: 16px; background: var(--vert); color: #fff;
     display: flex; flex-wrap: wrap; justify-content: center;
@@ -339,6 +342,14 @@
 
 <main id="haut">
   <!-- ========== ACCUEIL ========== -->
+  <!-- Fermeture exceptionnelle : le bandeau disparaît tout seul à la date de data-jusqua (heure de Paris) -->
+  <div class="fermeture" id="fermeture" data-jusqua="2026-11-05 18:30">
+    <div class="conteneur">
+      <strong>Fermeture exceptionnelle du 19 octobre au 4 novembre</strong>
+      Réouverture le jeudi 5 novembre à 18&nbsp;h&nbsp;30.
+    </div>
+  </div>
+
   <div class="accueil">
     <div class="conteneur">
       <div>
@@ -565,16 +576,23 @@
     function maintenantATaller() {
       try {
         var v = {};
-        new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Paris', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false })
+        new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Paris', year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false })
           .formatToParts(new Date()).forEach(function (p) { v[p.type] = p.value; });
         var jour = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].indexOf(v.weekday);
         var minutes = (+v.hour % 24) * 60 + +v.minute;
-        if (jour >= 0 && minutes >= 0) return { jour: jour, minutes: minutes };
+        var date = v.year + '-' + v.month + '-' + v.day + ' ' + ('0' + (+v.hour % 24)).slice(-2) + ':' + v.minute;
+        if (jour >= 0 && minutes >= 0) return { jour: jour, minutes: minutes, date: date };
       } catch (e) { /* navigateur sans fuseaux horaires : on prend l'heure de l'appareil */ }
       var d = new Date();
-      return { jour: (d.getDay() + 6) % 7, minutes: d.getHours() * 60 + d.getMinutes() };
+      var deux = function (x) { return ('0' + x).slice(-2); };
+      return { jour: (d.getDay() + 6) % 7, minutes: d.getHours() * 60 + d.getMinutes(),
+        date: d.getFullYear() + '-' + deux(d.getMonth() + 1) + '-' + deux(d.getDate()) + ' ' + deux(d.getHours()) + ':' + deux(d.getMinutes()) };
     }
-    function calculerStatut(horaires, jour, minutes) {
+    // Fermeture exceptionnelle (dates « AAAA-MM-JJ HH:MM », heure de Paris) : du dernier service jusqu'au jour de la réouverture
+    var FERMETURE = { du: '2026-10-18 20:30', au: '2026-11-05 00:00', texte: 'Fermé — réouverture le jeudi 5 novembre à 1800a0h00a030' };
+
+    function calculerStatut(horaires, jour, minutes, date) {
+      if (date >= FERMETURE.du && date < FERMETURE.au) return { etat: 'ferme', texte: FERMETURE.texte };
       var h = horaires[jour];
       if (h && minutes >= h[0] && minutes < h[1]) return { etat: 'ouvert', texte: "Ouvert en ce moment, jusqu'à " + enHeure(h[1]) };
       if (h && minutes < h[0]) return { etat: 'bientot', texte: 'Ouvre ce soir à ' + enHeure(h[0]) };
@@ -584,6 +602,11 @@
       }
       return { etat: 'ferme', texte: 'Fermé' };
     }
+
+    essayer(function () {
+      var bandeau = document.getElementById('fermeture');
+      if (bandeau && maintenantATaller().date >= bandeau.getAttribute('data-jusqua')) bandeau.hidden = true;
+    });
 
     essayer(function () {
       var lignes = tous('#horaires tbody tr');
@@ -596,7 +619,7 @@
       });
       function afficher() {
         var t = maintenantATaller();
-        var s = calculerStatut(horaires, t.jour, t.minutes);
+        var s = calculerStatut(horaires, t.jour, t.minutes, t.date);
         statut.className = 'statut ' + s.etat;
         texte.textContent = s.texte;
         statut.hidden = false;
